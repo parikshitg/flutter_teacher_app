@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './signup_screen.dart';
+
 class LoginScreen extends StatefulWidget {
 
   static final String id = 'login_screen';
@@ -11,7 +13,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
 
   final _formKey = GlobalKey<FormState>();
-  String _email, _password;
+  String  _email, _password;
 
   _submit() {
     if(_formKey.currentState.validate()){
@@ -55,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: TextFormField(
                       decoration: InputDecoration(labelText: 'Password'),
                       validator: (input) => input.length < 6 ? 'Password must be atleast 6 characters' : null,
-                      onSaved: (input) => _email = input,
+                      onSaved: (input) => _password = input,
                       obscureText: true,
                     ),
                   ),
@@ -65,6 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: FlatButton(
                       onPressed: _submit,
                       color: Colors.blue,
+                      padding: EdgeInsets.all(10.0),
                       child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 18.0),),
                     ),
                   ),
@@ -72,8 +75,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     width: 250.0,
                     child: FlatButton(
-                      onPressed: () => print("login clicked"),
+                      onPressed: () => Navigator.pushNamed(context, SignupScreen.id),
                       color: Colors.blue,
+                      padding: EdgeInsets.all(10.0),
                       child: Text("Go to Signup", style: TextStyle(color: Colors.white, fontSize: 18.0),),
                     ),
                   ),
