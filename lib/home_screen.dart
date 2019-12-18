@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_teacher_app/screens/events/events_homescreen.dart';
+import 'package:flutter_teacher_app/screens/schdule/schedule_homescreen.dart';
+import 'package:flutter_teacher_app/screens/attendance/attendance_homescreen.dart';
+import 'package:flutter_teacher_app/screens/students/students_homescreen.dart';
+import 'package:flutter_teacher_app/screens/homeworks/homeworks_homescreen.dart';
+import 'package:flutter_teacher_app/screens/notes/notes_homescreen.dart';
+
 class HomeScreen extends StatefulWidget {
   static final String id = "home_screen";
 
@@ -43,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       icon: Icon(Icons.schedule),
                       iconSize: 50.0,
-                      onPressed: () => print("Schedule home Screen"),
+                      onPressed: () => Navigator.pushNamed(context, ScheduleHomeScreen.id),
                     ),
                     Text("Schedule"),
                   ],
@@ -53,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       icon: Icon(Icons.event_available),
                       iconSize: 50.0,
-                      onPressed: () => print("Events home Screen"),
+                      onPressed: () => Navigator.pushNamed(context, EventsHomeScreen.id),
                     ),
                     Text("Events"),
                   ],
@@ -68,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       icon: Icon(Icons.record_voice_over),
                       iconSize: 50.0,
-                      onPressed: () => print('Attendance Home Screen'),
+                      onPressed: () => Navigator.pushNamed(context, AttendanceHomescreen.id),
                     ),
                     Text("Attendance"),
                   ],
@@ -78,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       icon: Icon(Icons.school),
                       iconSize: 50.0,
-                      onPressed: () => print('Students home Screen'),
+                      onPressed: () => Navigator.pushNamed(context, StudentsHomescreen.id),
                     ),
                     Text("Students"),
                   ],
@@ -93,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       icon: Icon(Icons.library_books),
                       iconSize: 50.0,
-                      onPressed: () => print("HomeWork Home Screen"),
+                      onPressed: () => Navigator.pushNamed(context, HomeworksHomescreen.id),
                     ),
                     Text("Home Work"),
                   ],
@@ -103,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       icon: Icon(Icons.note_add),
                       iconSize: 50.0,
-                      onPressed: () => print("Notes Home Screen"),
+                      onPressed: () => Navigator.pushNamed(context, NotesHomescreen.id),
                     ),
                     Text("Notes"),
                   ],

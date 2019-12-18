@@ -11,8 +11,8 @@ class EventsHomeScreen extends StatefulWidget {
 class _EventsHomeScreenState extends State<EventsHomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      body: Center(child: Text("Events Home Screen"),),
     );
   }
 }

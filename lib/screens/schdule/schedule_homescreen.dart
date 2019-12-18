@@ -11,8 +11,8 @@ class ScheduleHomeScreen extends StatefulWidget {
 class _ScheduleHomeScreenState extends State<ScheduleHomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      body: Center(child: Text("Schedule Home Screen"),),
     );
   }
 }
