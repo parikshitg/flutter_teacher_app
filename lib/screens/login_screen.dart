@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../home_screen.dart';
 import './signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -65,7 +66,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     width: 250.0,
                     child: FlatButton(
-                      onPressed: _submit,
+                      //onPressed: _submit,
+                      onPressed: () => Navigator.pushNamed(context, HomeScreen.id),
                       color: Colors.blue,
                       padding: EdgeInsets.all(10.0),
                       child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 18.0),),
