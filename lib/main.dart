@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+import './screens/attendance/attendance_homescreen.dart';
+import './screens/events/events_homescreen.dart';
+import './screens/homeworks/homeworks_homescreen.dart';
+import './screens/notes/notes_homescreen.dart';
+import './screens/students/students_homescreen.dart';
+import './screens/schdule/schedule_homescreen.dart';
 import './screens/login_screen.dart';
 import './screens/signup_screen.dart';
 import './home_screen.dart';
@@ -21,6 +27,12 @@ class MyApp extends StatelessWidget {
         LoginScreen.id: (context) => LoginScreen(),
         SignupScreen.id: (context) => SignupScreen(),
         HomeScreen.id: (context) => HomeScreen(),
+        ScheduleHomeScreen.id: (context) => ScheduleHomeScreen(),
+        EventsHomeScreen.id: (context) => EventsHomeScreen(),
+        AttendanceHomescreen.id: (context) => AttendanceHomescreen(),
+        StudentsHomescreen.id: (context) => StudentsHomescreen(),
+        HomeworksHomescreen.id: (context) => HomeworksHomescreen(),
+        NotesHomescreen.id: (context) => NotesHomescreen(),
       },
     );
   }

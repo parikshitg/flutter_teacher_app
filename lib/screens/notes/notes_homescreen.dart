@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NotesHomescreen extends StatefulWidget {
+
+  static final String id = 'notes_homescreen.dart';
+
   @override
   _NotesHomescreenState createState() => _NotesHomescreenState();
 }

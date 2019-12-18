@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class StudentsHomescreen extends StatefulWidget {
+
+  static final String id = 'students_homescreen';
+
   @override
   _StudentsHomescreenState createState() => _StudentsHomescreenState();
 }
