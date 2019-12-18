@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: <Widget>[
                     IconButton(
                       icon: Icon(Icons.schedule),
-                      iconSize: 50.0,
+                      iconSize: 70.0,
                       onPressed: () => Navigator.pushNamed(context, ScheduleHomeScreen.id),
                     ),
                     Text("Schedule"),
@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: <Widget>[
                     IconButton(
                       icon: Icon(Icons.event_available),
-                      iconSize: 50.0,
+                      iconSize: 70.0,
                       onPressed: () => Navigator.pushNamed(context, EventsHomeScreen.id),
                     ),
                     Text("Events"),
@@ -67,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
+            SizedBox(height: 20.0,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: <Widget>[
                     IconButton(
                       icon: Icon(Icons.record_voice_over),
-                      iconSize: 50.0,
+                      iconSize: 70.0,
                       onPressed: () => Navigator.pushNamed(context, AttendanceHomescreen.id),
                     ),
                     Text("Attendance"),
@@ -84,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: <Widget>[
                     IconButton(
                       icon: Icon(Icons.school),
-                      iconSize: 50.0,
+                      iconSize: 70.0,
                       onPressed: () => Navigator.pushNamed(context, StudentsHomescreen.id),
                     ),
                     Text("Students"),
@@ -92,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
+            SizedBox(height: 20.0,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -99,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: <Widget>[
                     IconButton(
                       icon: Icon(Icons.library_books),
-                      iconSize: 50.0,
+                      iconSize: 70.0,
                       onPressed: () => Navigator.pushNamed(context, HomeworksHomescreen.id),
                     ),
                     Text("Home Work"),
@@ -109,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: <Widget>[
                     IconButton(
                       icon: Icon(Icons.note_add),
-                      iconSize: 50.0,
+                      iconSize: 70.0,
                       onPressed: () => Navigator.pushNamed(context, NotesHomescreen.id),
                     ),
                     Text("Notes"),

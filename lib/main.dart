@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './screens/students/add_student.dart';
+
 import './screens/attendance/attendance_homescreen.dart';
 import './screens/events/events_homescreen.dart';
 import './screens/homeworks/homeworks_homescreen.dart';
@@ -9,6 +11,7 @@ import './screens/schdule/schedule_homescreen.dart';
 import './screens/login_screen.dart';
 import './screens/signup_screen.dart';
 import './home_screen.dart';
+import 'screens/students/student_details.dart';
 
 void main() => runApp(MyApp());
 
@@ -33,6 +36,8 @@ class MyApp extends StatelessWidget {
         StudentsHomescreen.id: (context) => StudentsHomescreen(),
         HomeworksHomescreen.id: (context) => HomeworksHomescreen(),
         NotesHomescreen.id: (context) => NotesHomescreen(),
+        AddStudent.id: (context) => AddStudent(),
+        StudentDetails.id: (context) => StudentDetails(),
       },
     );
   }
