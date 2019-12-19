@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+
 
 class AddStudent extends StatefulWidget {
   static final id = 'add_student';
@@ -102,7 +104,7 @@ class _AddStudentState extends State<AddStudent> {
                       initialValue: _bloodGroup,
                       decoration: InputDecoration(
                         icon: Icon(
-                          Icons.person,
+                          Entypo.drop,
                         ),
                         labelText: 'Blood Group',
                       ),
