@@ -9,7 +9,6 @@ class AddStudent extends StatefulWidget {
 }
 
 class _AddStudentState extends State<AddStudent> {
-
   final _formKey = GlobalKey<FormState>();
 
   String _name = '';
@@ -23,16 +22,23 @@ class _AddStudentState extends State<AddStudent> {
   DateTime _dob = DateTime.now();
   String _address = '';
 
+  int group = 1;
 
+  //date of birth picker
   Future _selectDate() async {
     DateTime picked = await showDatePicker(
       context: context,
-      initialDate:  DateTime.now(),
+      initialDate: DateTime.now(),
       firstDate: DateTime(2019),
       lastDate: DateTime.now(),
     );
+    if (picked == null) {
+      return;
+    } else {
+      _dob = picked;
+      print(_dob);
+    }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +56,8 @@ class _AddStudentState extends State<AddStudent> {
         ),
       ),
       body: GestureDetector(
-        onTap: () => FocusScope.of(context)
-            .unfocus(),
-              child: ListView(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: ListView(
           children: <Widget>[
             Padding(
               padding: EdgeInsets.all(30.0),
@@ -70,105 +75,151 @@ class _AddStudentState extends State<AddStudent> {
                         fontSize: 18.0
                       ),*/
                       decoration: InputDecoration(
-                        icon: Icon(Icons.person,),
+                        icon: Icon(
+                          Icons.person,
+                        ),
                         labelText: 'Name',
                       ),
                     ),
-                    SizedBox(height: 10.0,),
+                    SizedBox(
+                      height: 10.0,
+                    ),
                     TextFormField(
                       initialValue: _rollNo,
-                      /*style: TextStyle(
-                        fontSize: 18.0
-                      ),*/
                       decoration: InputDecoration(
-                        icon: Icon(Icons.confirmation_number,),
+                        icon: Icon(
+                          Icons.confirmation_number,
+                        ),
                         labelText: 'Roll No',
                       ),
                     ),
-                    SizedBox(height: 10.0,),
+                    SizedBox(
+                      height: 10.0,
+                    ),
                     TextFormField(
                       initialValue: _bloodGroup,
-                      /*style: TextStyle(
-                        fontSize: 18.0
-                      ),*/
                       decoration: InputDecoration(
-                        icon: Icon(Icons.person,),
+                        icon: Icon(
+                          Icons.person,
+                        ),
                         labelText: 'Blood Group',
                       ),
                     ),
-                    SizedBox(height: 10.0,),
+                    SizedBox(
+                      height: 10.0,
+                    ),
                     TextFormField(
                       initialValue: _fathersName,
-                      /*style: TextStyle(
-                        fontSize: 18.0
-                      ),*/
                       decoration: InputDecoration(
-                        icon: Icon(Icons.person,),
+                        icon: Icon(
+                          Icons.person,
+                        ),
                         labelText: 'Fathers Name',
                       ),
                     ),
-                    SizedBox(height: 10.0,),
+                    SizedBox(
+                      height: 10.0,
+                    ),
                     TextFormField(
                       initialValue: _fathersPhoneNo,
-                      /*style: TextStyle(
-                        fontSize: 18.0
-                      ),*/
                       decoration: InputDecoration(
-                        icon: Icon(Icons.person,),
+                        icon: Icon(
+                          Icons.person,
+                        ),
                         labelText: 'Fathers Phone No',
                       ),
                     ),
-                    SizedBox(height: 10.0,),
+                    SizedBox(
+                      height: 10.0,
+                    ),
                     TextFormField(
                       initialValue: _mothersName,
-                      /*style: TextStyle(
-                        fontSize: 18.0
-                      ),*/
                       decoration: InputDecoration(
-                        icon: Icon(Icons.person,),
+                        icon: Icon(
+                          Icons.person,
+                        ),
                         labelText: 'Mothers Name',
                       ),
                     ),
-                    SizedBox(height: 10.0,),
+                    SizedBox(
+                      height: 10.0,
+                    ),
                     TextFormField(
                       initialValue: _mothersPhoneNo,
-                      /*style: TextStyle(
-                        fontSize: 18.0
-                      ),*/
                       decoration: InputDecoration(
-                        icon: Icon(Icons.person,),
+                        icon: Icon(
+                          Icons.person,
+                        ),
                         labelText: 'Mothers Phone No',
                       ),
                     ),
-                    SizedBox(height: 10.0,),
-                    TextFormField(
-                      /*style: TextStyle(
-                        fontSize: 18.0
-                      ),*/
-                      decoration: InputDecoration(
-                        icon: Icon(Icons.person,),
-                        labelText: 'Gender',
-                      ),
+                    SizedBox(
+                      height: 10.0,
                     ),
-                    SizedBox(height: 10.0,),
+                    Row(
+                      children: <Widget>[
+                        Text('Gender'),
+                        Container(
+                          width: 300,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  Text('Male'),
+                                  Radio(
+                                    value: 1,
+                                    groupValue: group,
+                                    onChanged: (T) {
+                                      print(T);
+                                      setState(() {
+                                        group = T;
+                                      });
+                                    },
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Text('Female'),
+                                  Radio(
+                                    value: 2,
+                                    groupValue: group,
+                                    onChanged: (T) {
+                                      print(T);
+                                      setState(() {
+                                        group = T;
+                                      });
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10.0,
+                    ),
                     TextFormField(
                       onTap: _selectDate,
-                      /*style: TextStyle(
-                        fontSize: 18.0
-                      ),*/
                       decoration: InputDecoration(
-                        icon: Icon(Icons.person,),
+                        icon: Icon(
+                          Icons.person,
+                        ),
                         labelText: 'DOB',
                       ),
                     ),
-                    SizedBox(height: 10.0,),
+                    SizedBox(
+                      height: 10.0,
+                    ),
                     TextFormField(
                       initialValue: _address,
-                      /*style: TextStyle(
-                        fontSize: 18.0
-                      ),*/
                       decoration: InputDecoration(
-                        icon: Icon(Icons.person,),
+                        icon: Icon(
+                          Icons.person,
+                        ),
                         labelText: 'Address',
                       ),
                     ),
@@ -182,7 +233,9 @@ class _AddStudentState extends State<AddStudent> {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(0.0),
         child: RaisedButton(
-          onPressed: () {print('save clicked');},
+          onPressed: () {
+            print('save clicked');
+          },
           color: Colors.black,
           textColor: Colors.white,
           child: Text('Save'),
