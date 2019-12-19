@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 class AddStudent extends StatefulWidget {
   static final id = 'add_student';
 
@@ -124,7 +126,7 @@ class _AddStudentState extends State<AddStudent> {
                       initialValue: _fathersPhoneNo,
                       decoration: InputDecoration(
                         icon: Icon(
-                          Icons.person,
+                          Icons.phone,
                         ),
                         labelText: 'Fathers Phone No',
                       ),
@@ -148,7 +150,7 @@ class _AddStudentState extends State<AddStudent> {
                       initialValue: _mothersPhoneNo,
                       decoration: InputDecoration(
                         icon: Icon(
-                          Icons.person,
+                          Icons.phone,
                         ),
                         labelText: 'Mothers Phone No',
                       ),
@@ -158,9 +160,15 @@ class _AddStudentState extends State<AddStudent> {
                     ),
                     Row(
                       children: <Widget>[
-                        Text('Gender'),
+                        Row(
+                          children: <Widget>[
+                            Icon(Icons.device_hub, color: Colors.black54,),
+                            SizedBox(width: 10.0,),
+                            Text('Gender', style: TextStyle(color: Colors.black54, fontSize: 16.0),),
+                          ],
+                        ),
                         Container(
-                          width: 300,
+                          width: 250,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
@@ -206,7 +214,7 @@ class _AddStudentState extends State<AddStudent> {
                       onTap: _selectDate,
                       decoration: InputDecoration(
                         icon: Icon(
-                          Icons.person,
+                          Icons.cake,
                         ),
                         labelText: 'DOB',
                       ),
@@ -218,7 +226,7 @@ class _AddStudentState extends State<AddStudent> {
                       initialValue: _address,
                       decoration: InputDecoration(
                         icon: Icon(
-                          Icons.person,
+                          FontAwesomeIcons.locationArrow,
                         ),
                         labelText: 'Address',
                       ),
