@@ -1,9 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-
+import 'package:image_picker/image_picker.dart';
 
 class AddStudent extends StatefulWidget {
   static final id = 'add_student';
@@ -27,6 +29,75 @@ class _AddStudentState extends State<AddStudent> {
   String _address = '';
 
   int group = 1;
+
+  File _profileImage;
+
+  _showSelectImageDialog() {
+    return Platform.isIOS ? _iosBottomSheet() : _androidDialog;
+  }
+
+  _iosBottomSheet() {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoActionSheet(
+          title: Text('Add Photo'),
+          actions: <Widget>[
+            CupertinoActionSheetAction(
+              child: Text("Take Photo"),
+              onPressed: () => _handleImageFromGallery(ImageSource.camera),
+            ),
+            CupertinoActionSheetAction(
+              child: Text("Choose from Gallery"),
+              onPressed: () => _handleImageFromGallery(ImageSource.gallery),
+            ),
+          ],
+          cancelButton: CupertinoActionSheetAction(
+            child: Text('Cancel'),
+            onPressed: () => Navigator.pop(context),
+          ),
+        );
+      },
+    );
+  }
+
+  _androidDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          title: Text('Add Photo'),
+          children: <Widget>[
+            SimpleDialogOption(
+              child: Text("Take Photo"),
+              onPressed: () => _handleImageFromGallery(ImageSource.camera),
+            ),
+            SimpleDialogOption(
+              child: Text("Choose from Gallery"),
+              onPressed: () => _handleImageFromGallery(ImageSource.gallery),
+            ),
+            SimpleDialogOption(
+              child: Text(
+                "Cancel",
+                style: TextStyle(color: Colors.redAccent),
+              ),
+              onPressed: () => Navigator.pop(context),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  //image picker
+  _handleImageFromGallery(ImageSource source) async {
+    File imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
+    if (imageFile != null) {
+      setState(() {
+        _profileImage = imageFile;
+      });
+    }
+  }
 
   //date of birth picker
   Future _selectDate() async {
@@ -69,9 +140,20 @@ class _AddStudentState extends State<AddStudent> {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
-                    CircleAvatar(
-                      radius: 60.0,
-                      backgroundImage: AssetImage('assets/images/avatar.jpg'),
+                    GestureDetector(
+                      onTap: _showSelectImageDialog,
+                      child: Container(
+                        child: CircleAvatar(
+                          radius: 60.0,
+                          child: Icon(
+                            Icons.add_a_photo,
+                            color: Colors.white,
+                            size: 50.0,
+                          ),
+                          backgroundColor: Colors.grey,
+                          //backgroundImage: AssetImage('assets/images/avatar.jpg'),
+                        ),
+                      ),
                     ),
                     TextFormField(
                       initialValue: _name,
@@ -164,9 +246,18 @@ class _AddStudentState extends State<AddStudent> {
                       children: <Widget>[
                         Row(
                           children: <Widget>[
-                            Icon(Icons.device_hub, color: Colors.black54,),
-                            SizedBox(width: 10.0,),
-                            Text('Gender', style: TextStyle(color: Colors.black54, fontSize: 16.0),),
+                            Icon(
+                              FontAwesomeIcons.transgender,
+                              color: Colors.black54,
+                            ),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Text(
+                              'Gender',
+                              style: TextStyle(
+                                  color: Colors.black54, fontSize: 16.0),
+                            ),
                           ],
                         ),
                         Container(
