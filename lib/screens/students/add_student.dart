@@ -129,6 +129,12 @@ class _AddStudentState extends State<AddStudent> {
           color: Colors.black,
           onPressed: () => Navigator.pop(context),
         ),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('Save'),
+            onPressed: () {print('save clicked');},
+          ),
+        ],
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -331,7 +337,7 @@ class _AddStudentState extends State<AddStudent> {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
+      /*bottomNavigationBar: Padding(
         padding: EdgeInsets.all(0.0),
         child: RaisedButton(
           onPressed: () {
@@ -341,7 +347,7 @@ class _AddStudentState extends State<AddStudent> {
           textColor: Colors.white,
           child: Text('Save'),
         ),
-      ),
+      ),*/
     );
   }
 }
