@@ -2,12 +2,17 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../models/student_model.dart';
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddStudent extends StatefulWidget {
+  final Student student;
+
+  AddStudent({this.student});
+
   static final id = 'add_student';
 
   @override
@@ -18,7 +23,7 @@ class _AddStudentState extends State<AddStudent> {
   final _formKey = GlobalKey<FormState>();
 
   String _name = '';
-  String _rollNo = '';
+  String _rollNo ;
   String _bloodGroup = '';
   String _fathersName = '';
   String _mothersName = '';
@@ -115,6 +120,31 @@ class _AddStudentState extends State<AddStudent> {
     }
   }
 
+  //_submit form function
+  _submit() {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+
+      Student student = Student(
+        name: _name,
+        rollNo: _rollNo,
+        bloodGroup: _bloodGroup,
+        fathersName: _fathersName,
+        fathersPhoneNo: _fathersPhoneNo,
+        mothersName: _mothersName,
+        mothersPhoneNo: _mothersPhoneNo,
+
+      );
+      print(student.name);
+      print(student.rollNo);
+      print(student.bloodGroup);
+      print(student.fathersName);
+      print(student.fathersPhoneNo);
+      print(student.mothersName);
+      print(student.mothersPhoneNo);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,7 +162,7 @@ class _AddStudentState extends State<AddStudent> {
         actions: <Widget>[
           FlatButton(
             child: Text('Save'),
-            onPressed: () {print('save clicked');},
+            onPressed: _submit,
           ),
         ],
       ),
@@ -172,18 +202,23 @@ class _AddStudentState extends State<AddStudent> {
                         ),
                         labelText: 'Name',
                       ),
+                      validator: (input) => input.trim().length < 1
+                          ? 'Please Enter a valid name'
+                          : null,
+                      onSaved: (input) => _name = input,
                     ),
                     SizedBox(
                       height: 10.0,
                     ),
                     TextFormField(
-                      initialValue: _rollNo,
                       decoration: InputDecoration(
                         icon: Icon(
                           Icons.confirmation_number,
                         ),
                         labelText: 'Roll No',
                       ),
+                      onSaved: (input) => _rollNo = input.toString(),
+                      //validator: (input) =>   ,
                     ),
                     SizedBox(
                       height: 10.0,
@@ -196,6 +231,7 @@ class _AddStudentState extends State<AddStudent> {
                         ),
                         labelText: 'Blood Group',
                       ),
+                      onSaved: (input) => _bloodGroup = input,
                     ),
                     SizedBox(
                       height: 10.0,
@@ -204,10 +240,11 @@ class _AddStudentState extends State<AddStudent> {
                       initialValue: _fathersName,
                       decoration: InputDecoration(
                         icon: Icon(
-                          Icons.person,
+                          FontAwesomeIcons.male,
                         ),
-                        labelText: 'Fathers Name',
+                        labelText: 'Father\'s Name',
                       ),
+                      onSaved: (input) => _fathersName = input,
                     ),
                     SizedBox(
                       height: 10.0,
@@ -218,8 +255,9 @@ class _AddStudentState extends State<AddStudent> {
                         icon: Icon(
                           Icons.phone,
                         ),
-                        labelText: 'Fathers Phone No',
+                        labelText: 'Father\'s Phone No',
                       ),
+                      onSaved: (input) => _fathersPhoneNo = input,
                     ),
                     SizedBox(
                       height: 10.0,
@@ -228,10 +266,11 @@ class _AddStudentState extends State<AddStudent> {
                       initialValue: _mothersName,
                       decoration: InputDecoration(
                         icon: Icon(
-                          Icons.person,
+                          FontAwesomeIcons.female,
                         ),
-                        labelText: 'Mothers Name',
+                        labelText: 'Mother\'s Name',
                       ),
+                      onSaved: (input) => _mothersName = input,
                     ),
                     SizedBox(
                       height: 10.0,
@@ -242,8 +281,9 @@ class _AddStudentState extends State<AddStudent> {
                         icon: Icon(
                           Icons.phone,
                         ),
-                        labelText: 'Mothers Phone No',
+                        labelText: 'Mother\'s Phone No',
                       ),
+                      onSaved: (input) => _mothersPhoneNo = input,
                     ),
                     SizedBox(
                       height: 10.0,
