@@ -29,7 +29,7 @@ class _AddStudentState extends State<AddStudent> {
   String _mothersName = '';
   String _fathersPhoneNo = '';
   String _mothersPhoneNo = '';
-  bool _gender;
+  int _gender;
   DateTime _dob = DateTime.now();
   String _address = '';
 
@@ -133,7 +133,7 @@ class _AddStudentState extends State<AddStudent> {
         fathersPhoneNo: _fathersPhoneNo,
         mothersName: _mothersName,
         mothersPhoneNo: _mothersPhoneNo,
-
+        gender: _gender,
       );
       print(student.name);
       print(student.rollNo);
@@ -142,6 +142,7 @@ class _AddStudentState extends State<AddStudent> {
       print(student.fathersPhoneNo);
       print(student.mothersName);
       print(student.mothersPhoneNo);
+      print(student.gender);
     }
   }
 
@@ -318,9 +319,9 @@ class _AddStudentState extends State<AddStudent> {
                                     value: 1,
                                     groupValue: group,
                                     onChanged: (T) {
-                                      print(T);
                                       setState(() {
                                         group = T;
+                                        _gender = T;
                                       });
                                     },
                                   ),
@@ -333,9 +334,9 @@ class _AddStudentState extends State<AddStudent> {
                                     value: 2,
                                     groupValue: group,
                                     onChanged: (T) {
-                                      print(T);
                                       setState(() {
                                         group = T;
+                                        _gender = T;
                                       });
                                     },
                                   ),
