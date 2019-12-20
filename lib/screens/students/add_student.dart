@@ -8,6 +8,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'package:intl/intl.dart';
+
+
 class AddStudent extends StatefulWidget {
   final Student student;
 
@@ -104,22 +107,6 @@ class _AddStudentState extends State<AddStudent> {
     }
   }
 
-  //date of birth picker
-  Future _selectDate() async {
-    DateTime picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2019),
-      lastDate: DateTime.now(),
-    );
-    if (picked == null) {
-      return;
-    } else {
-      _dob = picked;
-      print(_dob);
-    }
-  }
-
   //_submit form function
   _submit() {
     if (_formKey.currentState.validate()) {
@@ -134,15 +121,41 @@ class _AddStudentState extends State<AddStudent> {
         mothersName: _mothersName,
         mothersPhoneNo: _mothersPhoneNo,
         gender: _gender,
+        address: _address,
+        dob: _dob,
       );
-      print(student.name);
-      print(student.rollNo);
-      print(student.bloodGroup);
-      print(student.fathersName);
-      print(student.fathersPhoneNo);
-      print(student.mothersName);
-      print(student.mothersPhoneNo);
-      print(student.gender);
+
+      print('student.name: ${student.name}');
+      print('student.rollNo: ${student.rollNo}');
+      print('student.bloodGroup: ${student.bloodGroup}');
+      print('student.fathersName: ${student.fathersName}');
+      print('student.fathersPhoneNo: ${student.fathersPhoneNo}');
+      print('student.mothersName: ${student.mothersName}');
+      print('student.mothersPhoneNo: ${student.mothersPhoneNo}');
+      print('student.gender: ${student.gender}');
+      //print('student.dob: ${DateFormat.yMd().format(student.dob)}');
+      print('student.address: ${student.address}');
+      
+      
+    }
+  }
+
+  //date of birth picker
+  Future _selectDate() async {
+    DateTime picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2019),
+      lastDate: DateTime.now(),
+    );
+    if (picked == null) {
+      print("no date chosen");
+      return;
+    } else {
+      setState(() {
+        _dob = picked;  
+      });
+      print(_dob);
     }
   }
 
@@ -351,6 +364,7 @@ class _AddStudentState extends State<AddStudent> {
                       height: 10.0,
                     ),
                     TextFormField(
+                      //initialValue: ,
                       onTap: _selectDate,
                       decoration: InputDecoration(
                         icon: Icon(
@@ -358,6 +372,8 @@ class _AddStudentState extends State<AddStudent> {
                         ),
                         labelText: 'DOB',
                       ),
+                      //onSaved: (input) => _dob = input.toString() as DateTime ,
+                      
                     ),
                     SizedBox(
                       height: 10.0,
@@ -370,6 +386,7 @@ class _AddStudentState extends State<AddStudent> {
                         ),
                         labelText: 'Address',
                       ),
+                      onSaved: (input) => _address = input,
                     ),
                   ],
                 ),

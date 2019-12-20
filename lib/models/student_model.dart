@@ -7,7 +7,7 @@ class Student {
   final String fathersPhoneNo;
   final String mothersPhoneNo;
   final int gender;
-  final DateTime dob;
+   DateTime dob;
   final String address;
 
   Student(
