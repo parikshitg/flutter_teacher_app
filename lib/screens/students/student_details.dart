@@ -14,6 +14,7 @@ class _StudentDetailsState extends State<StudentDetails> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Edit Student', style: TextStyle(color:Colors.black),),
+        backgroundColor: Colors.white,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.black,

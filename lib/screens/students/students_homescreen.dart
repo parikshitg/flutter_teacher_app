@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../screens/students/student_details.dart';
 import '../../models/student_model.dart';
-
 import './add_student.dart';
 
 class StudentsHomescreen extends StatelessWidget {
@@ -139,6 +139,7 @@ class _StudentsHomescreenState extends State<StudentsHomescreen> {*/
                   ),
                 ),
                 child: ListTile(
+                  onTap: () => Navigator.pushNamed(context, StudentDetails.id),
                   leading: CircleAvatar(
                     radius: 30,
                     child: Padding(
