@@ -64,6 +64,36 @@ class _StudentsHomescreenState extends State<StudentsHomescreen> {*/
       rollNo: '10',
       fathersName: 'Steve Austin Sr',
     ),
+    Student(
+      name: 'Roman Reigns',
+      rollNo: '11',
+      fathersName: 'Roman Reigns Sr',
+    ),
+    Student(
+      name: 'Dean Ambrose',
+      rollNo: '12',
+      fathersName: 'Jon Moxley Sr',
+    ),
+    Student(
+      name: 'Mike Mizanin',
+      rollNo: '13',
+      fathersName: 'The Miz Sr',
+    ),
+    Student(
+      name: 'Dolph Ziggler',
+      rollNo: '14',
+      fathersName: 'Dolph Ziggler Sr',
+    ),
+    Student(
+      name: 'Big Show',
+      rollNo: '15',
+      fathersName: 'Mark Henry Sr',
+    ),
+    Student(
+      name: 'The Rock',
+      rollNo: '16',
+      fathersName: 'Dywane Johnson Sr',
+    ),
   ];
 
   @override
@@ -90,14 +120,23 @@ class _StudentsHomescreenState extends State<StudentsHomescreen> {*/
         ],
       ),
       body: SingleChildScrollView(
-              child: Column(
+        child: Column(
           children: students.map(
             (tx) {
-              return Card(
+              return /*Card(
                 elevation: 5,
                 margin: EdgeInsets.symmetric(
                   vertical: 8,
                   horizontal: 5,
+                ),
+                child:*/
+                  Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Colors.grey,
+                    ),
+                  ),
                 ),
                 child: ListTile(
                   leading: CircleAvatar(
@@ -110,8 +149,8 @@ class _StudentsHomescreenState extends State<StudentsHomescreen> {*/
                   //title: Text("Student Name"),
                   title: Text(tx.name),
                   /*subtitle: Text(
-                    "s/o Students Fathers Name",
-                  ),*/
+                      "s/o Students Fathers Name",
+                    ),*/
                   subtitle: Text(tx.fathersName),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -138,6 +177,7 @@ class _StudentsHomescreenState extends State<StudentsHomescreen> {*/
                   ),
                 ),
               );
+              //);
             },
           ).toList(),
         ),
