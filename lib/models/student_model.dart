@@ -11,6 +11,7 @@ class Student {
   final int gender;
    DateTime dob;
   final String address;
+  final String profileUrl;
 
   Student(
       {@required this.name,
@@ -22,5 +23,6 @@ class Student {
       this.mothersPhoneNo,
       this.gender,
       this.dob,
-      this.address});
+      this.address,
+      this.profileUrl});
 }
