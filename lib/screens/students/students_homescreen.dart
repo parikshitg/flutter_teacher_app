@@ -1,15 +1,71 @@
 import 'package:flutter/material.dart';
 
+import '../../models/student_model.dart';
+
 import './add_student.dart';
 
-class StudentsHomescreen extends StatefulWidget {
+class StudentsHomescreen extends StatelessWidget {
   static final String id = 'students_homescreen';
 
-  @override
+  /*@override
   _StudentsHomescreenState createState() => _StudentsHomescreenState();
 }
 
-class _StudentsHomescreenState extends State<StudentsHomescreen> {
+class _StudentsHomescreenState extends State<StudentsHomescreen> {*/
+
+  final List<Student> students = [
+    Student(
+      name: 'John Cena',
+      rollNo: '1',
+      fathersName: 'John Cena Sr',
+    ),
+    Student(
+      name: 'Randy Orton',
+      rollNo: '2',
+      fathersName: 'Randy Keith Sr',
+    ),
+    Student(
+      name: 'Triple HHH',
+      rollNo: '3',
+      fathersName: 'Vince McMahon Sr',
+    ),
+    Student(
+      name: 'Shawn Michaels',
+      rollNo: '4',
+      fathersName: 'Bret Hart Sr',
+    ),
+    Student(
+      name: 'Batista',
+      rollNo: '5',
+      fathersName: 'Dave Bautista Sr',
+    ),
+    Student(
+      name: 'Rey Mysterio',
+      rollNo: '6',
+      fathersName: 'Rey Mysterio Sr',
+    ),
+    Student(
+      name: 'Seth Rollins',
+      rollNo: '7',
+      fathersName: 'Rollins Seth Sr',
+    ),
+    Student(
+      name: 'Undertaker',
+      rollNo: '8',
+      fathersName: 'Mark Calaway Sr',
+    ),
+    Student(
+      name: 'Kane',
+      rollNo: '9',
+      fathersName: 'Mark Calaway Sr',
+    ),
+    Student(
+      name: 'Stone Cold',
+      rollNo: '10',
+      fathersName: 'Steve Austin Sr',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,52 +89,58 @@ class _StudentsHomescreenState extends State<StudentsHomescreen> {
           ),
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          Card(
-            elevation: 5,
-            margin: EdgeInsets.symmetric(
-              vertical: 8,
-              horizontal: 5,
-            ),
-            child: ListTile(
-              leading: CircleAvatar(
-                radius: 30,
-                child: Padding(
-                  padding: EdgeInsets.all(6),
+      body: SingleChildScrollView(
+              child: Column(
+          children: students.map(
+            (tx) {
+              return Card(
+                elevation: 5,
+                margin: EdgeInsets.symmetric(
+                  vertical: 8,
+                  horizontal: 5,
                 ),
-                backgroundColor: Colors.grey,
-              ),
-              title: Text("Student Name"),
-              subtitle: Text(
-                "s/o Students Fathers Name",
-              ),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(
-                      Icons.phone,
-                      color: Colors.black54,
+                child: ListTile(
+                  leading: CircleAvatar(
+                    radius: 30,
+                    child: Padding(
+                      padding: EdgeInsets.all(6),
                     ),
-                    onPressed: () {
-                      print('call button clicked');
-                    },
+                    backgroundColor: Colors.grey,
                   ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.mail,
-                      color: Colors.black54,
-                    ),
-                    onPressed: () {
-                      print('sms button clicked');
-                    },
+                  //title: Text("Student Name"),
+                  title: Text(tx.name),
+                  /*subtitle: Text(
+                    "s/o Students Fathers Name",
+                  ),*/
+                  subtitle: Text(tx.fathersName),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(
+                          Icons.phone,
+                          color: Colors.black54,
+                        ),
+                        onPressed: () {
+                          print('call button clicked');
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.mail,
+                          color: Colors.black54,
+                        ),
+                        onPressed: () {
+                          print('sms button clicked');
+                        },
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          ),
-        ],
+                ),
+              );
+            },
+          ).toList(),
+        ),
       ),
     );
   }

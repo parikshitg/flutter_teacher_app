@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_teacher_app/models/student_model.dart';
 
 import './screens/students/add_student.dart';
 

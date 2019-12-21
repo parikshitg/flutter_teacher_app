@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class Student {
   final String name;
   final String rollNo;
@@ -11,8 +13,8 @@ class Student {
   final String address;
 
   Student(
-      {this.name,
-      this.rollNo,
+      {@required this.name,
+      @required this.rollNo,
       this.bloodGroup,
       this.fathersName,
       this.mothersName,
