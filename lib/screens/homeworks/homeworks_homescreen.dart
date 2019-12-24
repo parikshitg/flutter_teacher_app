@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../models/homework_model.dart';
+import 'add_homework_screen.dart';
 
 class HomeworksHomescreen extends StatefulWidget {
   static final String id = 'homework_homescreen';
@@ -30,9 +31,7 @@ class _HomeworksHomescreenState extends State<HomeworksHomescreen> {
           IconButton(
             icon: Icon(Icons.add),
             color: Colors.black,
-            onPressed: () {
-              print('Add button clicked');
-            },
+            onPressed: () => Navigator.pushNamed(context, AddHomework.id),
           ),
         ],
       ),
@@ -40,9 +39,10 @@ class _HomeworksHomescreenState extends State<HomeworksHomescreen> {
         child: Column(
           children: homeworks.map((tx) { 
             return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+               padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0), 
+              //padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
               child: Card(
-                elevation: 5.0,
+                elevation: 3.0,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[

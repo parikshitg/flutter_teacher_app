@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_teacher_app/models/student_model.dart';
+import 'package:flutter_teacher_app/screens/homeworks/add_homework_screen.dart';
 
 import './screens/students/add_student.dart';
 
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         NotesHomescreen.id: (context) => NotesHomescreen(),
         AddStudent.id: (context) => AddStudent(),
         StudentDetails.id: (context) => StudentDetails(),
+        AddHomework.id: (context) => AddHomework(),
       },
     );
   }
