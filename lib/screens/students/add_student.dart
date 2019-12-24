@@ -169,7 +169,7 @@ class _AddStudentState extends State<AddStudent> {
         ),
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: IconButton(icon: Icon(Icons.arrow_back,), onPressed: () => Navigator.pop(context),),
+          icon: IconButton(icon: Icon(Icons.arrow_back_ios,), onPressed: () => Navigator.pop(context),),
           color: Colors.black,
           onPressed: () => Navigator.pop(context),
         ),

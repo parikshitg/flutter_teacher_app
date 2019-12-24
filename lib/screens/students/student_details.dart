@@ -21,7 +21,7 @@ class _StudentDetailsState extends State<StudentDetails> {
         ),
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back_ios),
           color: Colors.black,
           onPressed: () => Navigator.pop(context),
         ),

@@ -23,7 +23,7 @@ class _HomeworksHomescreenState extends State<HomeworksHomescreen> {
         ),
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back_ios),
           color: Colors.black,
           onPressed: () => Navigator.pop(context),
         ),
@@ -37,54 +37,60 @@ class _HomeworksHomescreenState extends State<HomeworksHomescreen> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: homeworks.map((tx) { 
-            return Padding(
-               padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0), 
-              //padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              child: Card(
-                elevation: 3.0,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(
-                            'Class ${tx.className} - ${tx.section}',
+          children: homeworks.map(
+            (tx) {
+              return Padding(
+                padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+                //padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                child: GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, AddHomework.id),
+                  child: Card(
+                    elevation: 3.0,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                'Class ${tx.className} - ${tx.section}',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.0),
+                              ),
+                              IconButton(
+                                icon: Icon(Icons.delete),
+                                color: Colors.black,
+                                onPressed: () {
+                                  print('delete button clicked');
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10.0, vertical: 10.0),
+                          child: Text('${tx.body}'),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Text(
+                            'Friday, 29 May 2015 05:50:06',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16.0),
+                                color: Colors.black54,
+                                fontStyle: FontStyle.italic),
                           ),
-                          IconButton(
-                            icon: Icon(Icons.delete),
-                            color: Colors.black,
-                            onPressed: () {
-                              print('delete button clicked');
-                            },
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      child: Text(
-                          '${tx.body}'),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: Text(
-                        'Friday, 29 May 2015 05:50:06',
-                        style: TextStyle(
-                            color: Colors.black54, fontStyle: FontStyle.italic),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            );
-          },).toList(),
+              );
+            },
+          ).toList(),
         ),
       ),
     );

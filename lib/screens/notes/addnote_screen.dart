@@ -19,7 +19,7 @@ class _AddNoteState extends State<AddNote> {
         backgroundColor: Colors.white,
         leading: IconButton(
           icon: Icon(
-            Icons.arrow_back,
+            Icons.arrow_back_ios,
             color: Colors.black,
           ),
           onPressed: () => Navigator.pop(context),
