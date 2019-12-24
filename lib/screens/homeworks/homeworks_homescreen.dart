@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../models/homework_model.dart';
+
 class HomeworksHomescreen extends StatefulWidget {
   static final String id = 'homework_homescreen';
 
@@ -34,45 +36,56 @@ class _HomeworksHomescreenState extends State<HomeworksHomescreen> {
           ),
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-            child: Card(
-              elevation: 5.0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text('Class 5 - C', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),),
-                        IconButton(
-                          icon: Icon(Icons.delete),
-                          color: Colors.black,
-                          onPressed: () {
-                            print('delete button clicked');
-                          },
-                        ),
-                      ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: homeworks.map((tx) { 
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              child: Card(
+                elevation: 5.0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'Class ${tx.className} - ${tx.section}',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16.0),
+                          ),
+                          IconButton(
+                            icon: Icon(Icons.delete),
+                            color: Colors.black,
+                            onPressed: () {
+                              print('delete button clicked');
+                            },
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                    child: Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut ero labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco poriti laboris nisi ut aliquip ex ea commodo consequat.'),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Text('Friday, 29 May 2015 05:50:06', style: TextStyle(color: Colors.black54),),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 10.0),
+                      child: Text(
+                          '${tx.body}'),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        'Friday, 29 May 2015 05:50:06',
+                        style: TextStyle(
+                            color: Colors.black54, fontStyle: FontStyle.italic),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ),
-        ],
+            );
+          },).toList(),
+        ),
       ),
     );
   }
