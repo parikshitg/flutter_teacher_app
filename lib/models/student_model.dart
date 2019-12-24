@@ -12,6 +12,7 @@ class Student {
    DateTime dob;
   final String address;
   final String profileUrl;
+   bool isPresent;
 
   Student(
       {@required this.name,
@@ -24,7 +25,8 @@ class Student {
       this.gender,
       this.dob,
       this.address,
-      this.profileUrl});
+      this.profileUrl,
+      this.isPresent});
 }
 
 final List<Student> students = [

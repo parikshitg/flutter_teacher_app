@@ -62,13 +62,14 @@ class _AttendanceHomescreenState extends State<AttendanceHomescreen> {
                     ),
                     backgroundColor: Colors.grey,
                   ),
-                  title: Text('Student Name'),
-                  subtitle: Text('Roll No. 1'),
+                  title: Text(tx.name),
+                  subtitle: Text('Roll No. ${tx.rollNo}'),
                   trailing: Checkbox(
                     value: checkBoxValue,
                     onChanged: (bool v) {
                       setState(() {
                         checkBoxValue = v;
+                        tx.isPresent = v;
                         print(v);
                       });
                     },
