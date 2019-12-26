@@ -28,8 +28,6 @@ dependencies:
   image_picker: ^0.6.1+4
   intl: ^0.16.0
 
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -133,9 +133,6 @@ class _AddHomeworkState extends State<AddHomework> {
                 ],
               ),
             ),
-            Container(
-              
-            ),
           ],
         ),
       ),
