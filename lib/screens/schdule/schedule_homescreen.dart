@@ -9,62 +9,61 @@ class ScheduleHomeScreen extends StatefulWidget {
   _ScheduleHomeScreenState createState() => _ScheduleHomeScreenState();
 }
 
-class _ScheduleHomeScreenState extends State<ScheduleHomeScreen> {
+class _ScheduleHomeScreenState extends State<ScheduleHomeScreen>
+    with SingleTickerProviderStateMixin {
+  final List<Tab> scheduleTabs = <Tab>[
+    Tab(
+      text: 'Monday',
+    ),
+    Tab(text: 'Tuesday'),
+    Tab(text: 'Wednesday'),
+    Tab(text: 'Thursday'),
+    Tab(text: 'Friday'),
+    Tab(text: 'Saturday'),
+  ];
+
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: scheduleTabs.length);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 6,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Schedule',
-            style: TextStyle(color: Colors.black),
-          ),
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios),
-            color: Colors.black,
-            onPressed: () => Navigator.pop(context),
-          ),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.add),
-              color: Colors.black,
-              onPressed: () => print('add schedule'),
-            )
-          ],
-          bottom: TabBar(
-            isScrollable: true,
-            tabs: <Widget>[
-              Text(
-                'Monday',
-                style: TextStyle(color: Colors.black, fontSize: 20.0),
-              ),
-              Text(
-                'Tuesday',
-                style: TextStyle(color: Colors.black, fontSize: 20.0),
-              ),
-              Text(
-                'Wednesday',
-                style: TextStyle(color: Colors.black, fontSize: 20.0),
-              ),
-              Text(
-                'Thursday',
-                style: TextStyle(color: Colors.black, fontSize: 20.0),
-              ),
-              Text(
-                'Friday',
-                style: TextStyle(color: Colors.black, fontSize: 20.0),
-              ),
-              Text(
-                'Saturday',
-                style: TextStyle(color: Colors.black, fontSize: 20.0),
-              ),
-            ],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Schedule',
+          style: TextStyle(color: Colors.black),
         ),
-        body: TabBarView(
-          children: <Widget>[
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          color: Colors.black,
+          onPressed: () => Navigator.pop(context),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.add),
+            color: Colors.black,
+            onPressed: () => print('add schedule'),
+          )
+        ],
+        bottom: TabBar(
+          labelStyle: TextStyle(fontSize: 18.0),
+          labelColor: Colors.black,
+          unselectedLabelColor: Colors.grey,
+          //indicatorColor: Colors.red,
+          isScrollable: true,
+          controller: _tabController,
+          tabs: scheduleTabs,
+        ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: <Widget>[
             SingleChildScrollView(
               child: Column(
                 children: schedules.map(
@@ -117,7 +116,6 @@ class _ScheduleHomeScreenState extends State<ScheduleHomeScreen> {
             Text('Friday'),
             Text('Saturday'),
           ],
-        ),
       ),
     );
   }
