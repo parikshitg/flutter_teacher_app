@@ -34,30 +34,31 @@ class _ScheduleHomeScreenState extends State<ScheduleHomeScreen> {
             )
           ],
           bottom: TabBar(
+            isScrollable: true,
             tabs: <Widget>[
               Text(
-                'Mon',
-                style: TextStyle(color: Colors.black),
+                'Monday',
+                style: TextStyle(color: Colors.black, fontSize: 20.0),
               ),
               Text(
-                'Tue',
-                style: TextStyle(color: Colors.black),
+                'Tuesday',
+                style: TextStyle(color: Colors.black, fontSize: 20.0),
               ),
               Text(
-                'Wed',
-                style: TextStyle(color: Colors.black),
+                'Wednesday',
+                style: TextStyle(color: Colors.black, fontSize: 20.0),
               ),
               Text(
-                'Thu',
-                style: TextStyle(color: Colors.black),
+                'Thursday',
+                style: TextStyle(color: Colors.black, fontSize: 20.0),
               ),
               Text(
-                'Fri',
-                style: TextStyle(color: Colors.black),
+                'Friday',
+                style: TextStyle(color: Colors.black, fontSize: 20.0),
               ),
               Text(
-                'Sat',
-                style: TextStyle(color: Colors.black),
+                'Saturday',
+                style: TextStyle(color: Colors.black, fontSize: 20.0),
               ),
             ],
           ),
