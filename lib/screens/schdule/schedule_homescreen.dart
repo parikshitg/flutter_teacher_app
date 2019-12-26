@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../models/schedule_model.dart';
+
 class ScheduleHomeScreen extends StatefulWidget {
   static final String id = 'schedule_homescreen';
 
@@ -62,8 +64,53 @@ class _ScheduleHomeScreenState extends State<ScheduleHomeScreen> {
         ),
         body: TabBarView(
           children: <Widget>[
-            Text('Monday'),
-            Text('Tuesday'),
+            SingleChildScrollView(
+              child: Column(
+                children: schedules.map(
+                  (tx) {
+                    return Card(
+                      elevation: 3.0,
+                      child: Padding(
+                        padding: EdgeInsets.all(25.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text('${tx.startTime} - ${tx.endTime}'),
+                            Text(
+                              'Class ${tx.className} - ${tx.section}',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600, fontSize: 16.0),
+                            ),
+                            Text(tx.subject),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ).toList(),
+              ),
+            ),
+            Column(
+              children: schedules.map(
+                (tx) {
+                  return Card(
+                    elevation: 3.0,
+                    child: ListTile(
+                      leading: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 8.0),
+                        child: Text('${tx.startTime} - ${tx.endTime}'),
+                      ),
+                      title: Text(
+                        'Class ${tx.className} - ${tx.section}',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      trailing: Text(tx.subject),
+                      onTap: () {},
+                    ),
+                  );
+                },
+              ).toList(),
+            ),
             Text('Wenesday'),
             Text('Thursday'),
             Text('Friday'),
