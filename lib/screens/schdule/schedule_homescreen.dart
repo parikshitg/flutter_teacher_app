@@ -31,6 +31,12 @@ class _ScheduleHomeScreenState extends State<ScheduleHomeScreen>
   }
 
   @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -90,27 +96,7 @@ class _ScheduleHomeScreenState extends State<ScheduleHomeScreen>
                 ).toList(),
               ),
             ),
-            Column(
-              children: schedules.map(
-                (tx) {
-                  return Card(
-                    elevation: 3.0,
-                    child: ListTile(
-                      leading: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 8.0),
-                        child: Text('${tx.startTime} - ${tx.endTime}'),
-                      ),
-                      title: Text(
-                        'Class ${tx.className} - ${tx.section}',
-                        style: TextStyle(fontWeight: FontWeight.w600),
-                      ),
-                      trailing: Text(tx.subject),
-                      onTap: () {},
-                    ),
-                  );
-                },
-              ).toList(),
-            ),
+            Text('Tuesday'),
             Text('Wenesday'),
             Text('Thursday'),
             Text('Friday'),
