@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class AddNote extends StatefulWidget {
   static final id = 'addnote_screen';
 
@@ -7,7 +8,8 @@ class AddNote extends StatefulWidget {
   _AddNoteState createState() => _AddNoteState();
 }
 
-class _AddNoteState extends State<AddNote> {
+class _AddNoteState extends State<AddNote> { 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

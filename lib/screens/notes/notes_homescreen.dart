@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../models/note_model.dart';
+
 import 'addnote_screen.dart';
 
 class NotesHomescreen extends StatefulWidget {
@@ -23,7 +25,29 @@ class _NotesHomescreenState extends State<NotesHomescreen> {
         ],
       ),
       backgroundColor: Colors.white,
-      body: Center(child: Text("Notes"),),
+      body: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(20.0,0.0,0.0,0.0),
+                child: Column(
+          children: notes.map((tx) {
+            return Container(
+                decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                child: ListTile(
+                  //leading: SizedBox(width: 20.0,),
+                  title: Text(tx.title, style: TextStyle(fontWeight: FontWeight.w600),),
+                  subtitle: Text(tx.noteDate, style: TextStyle(color: Colors.grey, fontSize: 12.0),),
+                ),
+            );
+          }).toList(),
+        ),
+              ),
+      ),
     );
   }
 }
