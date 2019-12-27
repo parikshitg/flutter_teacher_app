@@ -16,11 +16,26 @@ class AddSchedule extends StatefulWidget {
 class _AddScheduleState extends State<AddSchedule> {
   final _formKey = GlobalKey<FormState>();
 
-  String _startTime = '';
+  //String _startTime = '';
   String _endTime = '';
   String _className = '';
   String _section = '';
   String _subject = '';
+
+  TimeOfDay _startTime = TimeOfDay.now();
+  TimeOfDay picked;
+
+  Future<Null> selectTime(BuildContext context) async{
+    picked = await showTimePicker(
+      context: context,
+      initialTime: _startTime,
+    );
+
+    setState(() {
+      _startTime = picked;
+      print(_startTime);
+    });
+  }
 
 
   _submit() {
@@ -118,6 +133,9 @@ class _AddScheduleState extends State<AddSchedule> {
               ),
               SizedBox(height: 20.0,),
               TextFormField(
+                onTap: () {
+                  selectTime(context);
+                },
                 initialValue: _startTime,
                 decoration: InputDecoration(
                   icon: Icon(
