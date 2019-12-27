@@ -43,41 +43,44 @@ class _AttendanceHomescreenState extends State<AttendanceHomescreen> {
         ],),*/
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: students.map(
-            (tx) {
-              return Container(
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: Colors.grey,
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(10.0,5.0,0.0,5.0),
+          child: Column(
+            children: students.map(
+              (tx) {
+                return Container(
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Colors.grey,
+                      ),
                     ),
                   ),
-                ),
-                child: ListTile(
-                  leading: CircleAvatar(
-                    radius: 30,
-                    child: Padding(
-                      padding: EdgeInsets.all(6),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      child: Padding(
+                        padding: EdgeInsets.all(6),
+                      ),
+                      backgroundColor: Colors.grey,
                     ),
-                    backgroundColor: Colors.grey,
+                    title: Text(tx.name),
+                    subtitle: Text('Roll No. ${tx.rollNo}'),
+                    trailing: Checkbox(
+                      value: checkBoxValue,
+                      onChanged: (bool v) {
+                        setState(() {
+                          checkBoxValue = v;
+                          tx.isPresent = v;
+                          print(v);
+                        });
+                      },
+                    ),
                   ),
-                  title: Text(tx.name),
-                  subtitle: Text('Roll No. ${tx.rollNo}'),
-                  trailing: Checkbox(
-                    value: checkBoxValue,
-                    onChanged: (bool v) {
-                      setState(() {
-                        checkBoxValue = v;
-                        tx.isPresent = v;
-                        print(v);
-                      });
-                    },
-                  ),
-                ),
-              );
-            },
-          ).toList(),
+                );
+              },
+            ).toList(),
+          ),
         ),
       ),
     );

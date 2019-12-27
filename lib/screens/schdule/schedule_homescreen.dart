@@ -71,11 +71,13 @@ class _ScheduleHomeScreenState extends State<ScheduleHomeScreen>
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
-            SingleChildScrollView(
-              child: Column(
-                children: schedules.map(
-                  (tx) {
-                    return Card(
+          SingleChildScrollView(
+            child: Column(
+              children: schedules.map(
+                (tx) {
+                  return GestureDetector(
+                    onTap: () => Navigator.pushNamed(context, AddSchedule.id),
+                    child: Card(
                       elevation: 3.0,
                       child: Padding(
                         padding: EdgeInsets.all(25.0),
@@ -92,17 +94,18 @@ class _ScheduleHomeScreenState extends State<ScheduleHomeScreen>
                           ],
                         ),
                       ),
-                    );
-                  },
-                ).toList(),
-              ),
+                    ),
+                  );
+                },
+              ).toList(),
             ),
-            Text('Tuesday'),
-            Text('Wenesday'),
-            Text('Thursday'),
-            Text('Friday'),
-            Text('Saturday'),
-          ],
+          ),
+          Text('Tuesday'),
+          Text('Wenesday'),
+          Text('Thursday'),
+          Text('Friday'),
+          Text('Saturday'),
+        ],
       ),
     );
   }

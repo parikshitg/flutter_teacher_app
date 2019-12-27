@@ -39,9 +39,9 @@ class _NotesHomescreenState extends State<NotesHomescreen> {
                     ),
                   ),
                 child: ListTile(
-                  //leading: SizedBox(width: 20.0,),
+                  onTap: () => Navigator.pushNamed(context, AddNote.id),
                   title: Text(tx.title, style: TextStyle(fontWeight: FontWeight.w600),),
-                  subtitle: Text(tx.noteDate, style: TextStyle(color: Colors.grey, fontSize: 12.0),),
+                  subtitle: Text(tx.noteDate, style: TextStyle(color: Colors.grey, fontSize: 12.0, fontStyle: FontStyle.italic),),
                 ),
             );
           }).toList(),
