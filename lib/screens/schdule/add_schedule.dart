@@ -16,24 +16,24 @@ class AddSchedule extends StatefulWidget {
 class _AddScheduleState extends State<AddSchedule> {
   final _formKey = GlobalKey<FormState>();
 
-  //String _startTime = '';
+  String _startTime = '';
   String _endTime = '';
   String _className = '';
   String _section = '';
   String _subject = '';
 
-  TimeOfDay _startTime = TimeOfDay.now();
+  TimeOfDay _time = TimeOfDay.now();
   TimeOfDay picked;
 
   Future<Null> selectTime(BuildContext context) async{
     picked = await showTimePicker(
       context: context,
-      initialTime: _startTime,
+      initialTime: _time,
     );
 
     setState(() {
-      _startTime = picked;
-      print(_startTime);
+      _time = picked;
+      print(_time);
     });
   }
 

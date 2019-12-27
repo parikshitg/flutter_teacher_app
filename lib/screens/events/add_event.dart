@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 
-import '../../screens/events/add_event.dart';
-
-class EventsHomeScreen extends StatefulWidget {
-  static final String id = 'events_homescreen';
+class AddEvent extends StatefulWidget {
+  static final id = 'add_event';
 
   @override
-  _EventsHomeScreenState createState() => _EventsHomeScreenState();
+  _AddEventState createState() => _AddEventState();
 }
 
-class _EventsHomeScreenState extends State<EventsHomeScreen> {
+class _AddEventState extends State<AddEvent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Events',
+          'Add Event',
           style: TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
@@ -25,11 +23,10 @@ class _EventsHomeScreenState extends State<EventsHomeScreen> {
           onPressed: () => Navigator.pop(context),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add),
-            color: Colors.black,
-            onPressed: () => Navigator.pushNamed(context, AddEvent.id),
-          )
+          FlatButton(
+            child: Text('save', style: TextStyle(color: Colors.black),),
+            onPressed: () => print('save event'),
+          ),
         ],
       ),
     );

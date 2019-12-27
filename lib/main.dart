@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './screens/events/add_event.dart';
+
 import './models/student_model.dart';
 import './screens/homeworks/add_homework_screen.dart';
 import './screens/notes/addnote_screen.dart';
@@ -46,6 +48,7 @@ class MyApp extends StatelessWidget {
         AddHomework.id: (context) => AddHomework(),
         AddNote.id: (context) => AddNote(),
         AddSchedule.id: (context) => AddSchedule(),
+        AddEvent.id:(context) => AddEvent(),
       },
     );
   }
