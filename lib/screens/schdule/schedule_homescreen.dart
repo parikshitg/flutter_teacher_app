@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../models/schedule_model.dart';
+import 'add_schedule.dart';
 
 class ScheduleHomeScreen extends StatefulWidget {
   static final String id = 'schedule_homescreen';
@@ -54,7 +55,7 @@ class _ScheduleHomeScreenState extends State<ScheduleHomeScreen>
           IconButton(
             icon: Icon(Icons.add),
             color: Colors.black,
-            onPressed: () => print('add schedule'),
+            onPressed: () => Navigator.pushNamed(context, AddSchedule.id),
           )
         ],
         bottom: TabBar(
