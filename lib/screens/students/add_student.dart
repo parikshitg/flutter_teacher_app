@@ -10,7 +10,6 @@ import 'package:image_picker/image_picker.dart';
 
 import 'package:intl/intl.dart';
 
-
 class AddStudent extends StatefulWidget {
   final Student student;
 
@@ -26,7 +25,7 @@ class _AddStudentState extends State<AddStudent> {
   final _formKey = GlobalKey<FormState>();
 
   String _name = '';
-  String _rollNo ;
+  String _rollNo;
   String _bloodGroup = '';
   String _fathersName = '';
   String _mothersName = '';
@@ -133,10 +132,9 @@ class _AddStudentState extends State<AddStudent> {
       print('student.mothersName: ${student.mothersName}');
       print('student.mothersPhoneNo: ${student.mothersPhoneNo}');
       print('student.gender: ${student.gender}');
-      //print('student.dob: ${DateFormat.yMd().format(student.dob)}');
+      //print('student.dob: ${student.dob}');
+      print('student.dob: ${DateFormat('yyyy-MM-dd').format(student.dob)}');
       print('student.address: ${student.address}');
-      
-      
     }
   }
 
@@ -153,9 +151,9 @@ class _AddStudentState extends State<AddStudent> {
       return;
     } else {
       setState(() {
-        _dob = picked;  
+        _dob = picked;
       });
-      print(_dob);
+      //print(_dob);
     }
   }
 
@@ -169,7 +167,12 @@ class _AddStudentState extends State<AddStudent> {
         ),
         backgroundColor: Colors.white,
         leading: IconButton(
-          icon: IconButton(icon: Icon(Icons.arrow_back_ios,), onPressed: () => Navigator.pop(context),),
+          icon: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
           color: Colors.black,
           onPressed: () => Navigator.pop(context),
         ),
@@ -364,7 +367,8 @@ class _AddStudentState extends State<AddStudent> {
                       height: 10.0,
                     ),
                     TextFormField(
-                      //initialValue: ,
+                      //initialValue:
+                        //  '${DateFormat('yyyy-MM-dd').format(DateTime.now())}',
                       onTap: _selectDate,
                       decoration: InputDecoration(
                         icon: Icon(
@@ -372,8 +376,8 @@ class _AddStudentState extends State<AddStudent> {
                         ),
                         labelText: 'DOB',
                       ),
-                      //onSaved: (input) => _dob = input.toString() as DateTime ,
-                      
+                      //onSaved: (input) => _dob,
+                      //onSaved: (input) => _dob = '${DateFormat.yMd().format(input)}',
                     ),
                     SizedBox(
                       height: 10.0,

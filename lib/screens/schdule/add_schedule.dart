@@ -133,9 +133,9 @@ class _AddScheduleState extends State<AddSchedule> {
               ),
               SizedBox(height: 20.0,),
               TextFormField(
-                onTap: () {
+                /*onTap: () {
                   selectTime(context);
-                },
+                },*/
                 initialValue: _startTime,
                 decoration: InputDecoration(
                   icon: Icon(
