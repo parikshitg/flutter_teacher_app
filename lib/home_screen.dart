@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_teacher_app/screens/events/events_homescreen.dart';
-import 'package:flutter_teacher_app/screens/schdule/schedule_homescreen.dart';
+import 'package:flutter_teacher_app/screens/schedule/schedule_homescreen.dart';
 import 'package:flutter_teacher_app/screens/attendance/attendance_homescreen.dart';
 import 'package:flutter_teacher_app/screens/students/students_homescreen.dart';
 import 'package:flutter_teacher_app/screens/homeworks/homeworks_homescreen.dart';

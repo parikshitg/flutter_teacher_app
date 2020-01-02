@@ -5,7 +5,7 @@ import './screens/events/add_event.dart';
 import './models/student_model.dart';
 import './screens/homeworks/add_homework_screen.dart';
 import './screens/notes/addnote_screen.dart';
-import './screens/schdule/add_schedule.dart';
+import './screens/schedule/add_schedule.dart';
 
 import './screens/students/add_student.dart';
 
@@ -14,7 +14,7 @@ import './screens/events/events_homescreen.dart';
 import './screens/homeworks/homeworks_homescreen.dart';
 import './screens/notes/notes_homescreen.dart';
 import './screens/students/students_homescreen.dart';
-import './screens/schdule/schedule_homescreen.dart';
+import './screens/schedule/schedule_homescreen.dart';
 import './screens/login_screen.dart';
 import './screens/signup_screen.dart';
 import './home_screen.dart';
