@@ -15,6 +15,33 @@ class _EventsHomeScreenState extends State<EventsHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarWid('Eventsss', AddEvent.id),
+      body: Column(
+        children: <Widget>[
+          /*
+            if (birthday today)
+            Card(
+              child: Column(
+                children: <Widget>[
+                  CircleAvatar(
+                image of student
+              ),
+              Text('It's StudentName's Birthday Today'),
+                ]
+              ),
+              
+            ),
+          */ 
+          Card(
+            child: Column(
+              children: <Widget>[
+                Text('Final Exams'),
+                Text('3 January, 2020'),
+                Text('Body : Final exams of year 2019- 2020 are commencing from 3 january to 10 january'),
+              ],
+            ),
+          ),
+        ],
+      ),
       
     );
   }
