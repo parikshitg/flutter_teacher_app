@@ -33,13 +33,25 @@ class _EventsHomeScreenState extends State<EventsHomeScreen> {
           */ 
           Card(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('Final Exams'),
+                Text('Final Exams', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),),
                 Text('3 January, 2020'),
                 Text('Body : Final exams of year 2019- 2020 are commencing from 3 january to 10 january'),
               ],
             ),
           ),
+          Card(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('Final Exams', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),),
+                Text('3 January, 2020'),
+                Text('Body : Final exams of year 2019- 2020 are commencing from 3 january to 10 january'),
+              ],
+            ),
+          ),
+          
         ],
       ),
       
