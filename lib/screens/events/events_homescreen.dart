@@ -51,7 +51,6 @@ class _EventsHomeScreenState extends State<EventsHomeScreen> {
               ],
             ),
           ),
-          
         ],
       ),
       
