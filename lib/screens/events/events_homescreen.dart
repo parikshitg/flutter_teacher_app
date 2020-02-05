@@ -31,63 +31,75 @@ class _EventsHomeScreenState extends State<EventsHomeScreen> {
               
             ),
           */ 
-          Card(
-            elevation: 3.0,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text('Final Exams', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),),
-                  Text('3 January, 2020'),
-                  SizedBox(height:10.0),
-                  Text('Body : Final exams of year 2019- 2020 are commencing from 3 january to 10 january'),
-                ],
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, AddEvent.id),
+                      child: Card(
+              elevation: 3.0,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text('Final Exams', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),),
+                    Text('3 January, 2020'),
+                    SizedBox(height:10.0),
+                    Text('Body : Final exams of year 2019- 2020 are commencing from 3 january to 10 january'),
+                  ],
+                ),
               ),
             ),
           ),
-          Card(
-            elevation: 3.0,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text('Annual Day Celebration', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),),
-                  Text('10 January, 2020'),
-                  SizedBox(height:10.0),
-                  Text('Body : Final exams of year 2019- 2020 are commencing from 3 january to 10 january'),
-                ],
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, AddEvent.id),
+                      child: Card(
+              elevation: 3.0,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text('Annual Day Celebration', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),),
+                    Text('10 January, 2020'),
+                    SizedBox(height:10.0),
+                    Text('Body : Final exams of year 2019- 2020 are commencing from 3 january to 10 january'),
+                  ],
+                ),
               ),
             ),
           ),
-          Card(
-            elevation: 3.0,
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text('Annual Sports Day', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),),
-                  Text('13 January, 2020'),
-                  SizedBox(height:10.0),
-                  Text('Body : Final exams of year 2019- 2020 are commencing from 3 january to 10 january'),
-                ],
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, AddEvent.id),
+                      child: Card(
+              elevation: 3.0,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text('Annual Sports Day', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),),
+                    Text('13 January, 2020'),
+                    SizedBox(height:10.0),
+                    Text('Body : Final exams of year 2019- 2020 are commencing from 3 january to 10 january'),
+                  ],
+                ),
               ),
             ),
           ),
-          Card(
-            elevation: 3.0,
-            child: Padding(padding: EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Parikshit Gothwal\'s Birthday', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),),
-                Text('14 January, 2020'),
-                SizedBox(height: 10.0),
-                  Text('Body : Final exams of year 2019- 2020 are commencing from 3 january to 10 january'),
-              ],
-            ),),
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, AddEvent.id),
+                      child: Card(
+              elevation: 3.0,
+              child: Padding(padding: EdgeInsets.all(10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('Parikshit Gothwal\'s Birthday', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),),
+                  Text('14 January, 2020'),
+                  SizedBox(height: 10.0),
+                    Text('Body : Final exams of year 2019- 2020 are commencing from 3 january to 10 january'),
+                ],
+              ),),
+            ),
           ),
         ],
       ),

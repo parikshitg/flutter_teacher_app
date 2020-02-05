@@ -112,20 +112,23 @@ class _AddHomeworkState extends State<AddHomework> {
                           'Section',
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        DropdownButton<String>(
-                          items: _sections.map((String dropDownStringItem) {
-                            return DropdownMenuItem<String>(
-                              value: dropDownStringItem,
-                              child: Text(dropDownStringItem),
-                            );
-                          }).toList(),
-                          onChanged: (String sectionSelected) {
-                            setState(() {
-                              _section = sectionSelected;
-                              print(_section);
-                            });
-                          },
-                          value: _section,
+                        Container(
+                          color: Colors.lightBlueAccent,
+                          child: DropdownButton<String>(
+                            items: _sections.map((String dropDownStringItem) {
+                              return DropdownMenuItem<String>(
+                                value: dropDownStringItem,
+                                child: Text(dropDownStringItem),
+                              );
+                            }).toList(),
+                            onChanged: (String sectionSelected) {
+                              setState(() {
+                                _section = sectionSelected;
+                                print(_section);
+                              });
+                            },
+                            value: _section,
+                          ),
                         ),
                       ],
                     ),
