@@ -35,7 +35,7 @@ class _AddStudentState extends State<AddStudent> {
   DateTime _dob = DateTime.now();
   String _address = '';
 
-  int group = 1;
+  int _genderGroup = -1;
 
   File _profileImage;
 
@@ -155,6 +155,23 @@ class _AddStudentState extends State<AddStudent> {
       });
       //print(_dob);
     }
+  }
+
+  void _genderFunction(int value) {
+    setState(() {
+      _genderGroup = value;
+
+      switch (_genderGroup) {
+        case 1:
+          print('Male');
+          //_answer = 'Male';
+          break;
+        case 2:
+          print('Female');
+          //_answer = 'Female';
+          break;
+      }
+    });
   }
 
   @override
@@ -314,7 +331,7 @@ class _AddStudentState extends State<AddStudent> {
                               color: Colors.black54,
                             ),
                             SizedBox(
-                              width: 10.0,
+                              width: 5.0,
                             ),
                             Text(
                               'Gender',
@@ -324,7 +341,7 @@ class _AddStudentState extends State<AddStudent> {
                           ],
                         ),
                         Container(
-                          width: 250,
+                          width: 230,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
@@ -333,13 +350,8 @@ class _AddStudentState extends State<AddStudent> {
                                   Text('Male'),
                                   Radio(
                                     value: 1,
-                                    groupValue: group,
-                                    onChanged: (T) {
-                                      setState(() {
-                                        group = T;
-                                        _gender = T;
-                                      });
-                                    },
+                                    groupValue: _genderGroup,
+                                    onChanged: _genderFunction,
                                   ),
                                 ],
                               ),
@@ -348,13 +360,8 @@ class _AddStudentState extends State<AddStudent> {
                                   Text('Female'),
                                   Radio(
                                     value: 2,
-                                    groupValue: group,
-                                    onChanged: (T) {
-                                      setState(() {
-                                        group = T;
-                                        _gender = T;
-                                      });
-                                    },
+                                    groupValue: _genderGroup,
+                                    onChanged: _genderFunction,
                                   ),
                                 ],
                               ),
