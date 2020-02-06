@@ -80,20 +80,22 @@ class _AddHomeworkState extends State<AddHomework> {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        DropdownButton<String>(
-                          items: _classes.map((String dropDownStringItem) {
-                            return DropdownMenuItem<String>(
-                              value: dropDownStringItem,
-                              child: Text(dropDownStringItem),
-                            );
-                          }).toList(),
-                          onChanged: (String classSelected) {
-                            setState(() {
-                              _homeworkClass = classSelected;
-                              print(_homeworkClass);
-                            });
-                          },
-                          value: _homeworkClass,
+                        DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            items: _classes.map((String dropDownStringItem) {
+                              return DropdownMenuItem<String>(
+                                value: dropDownStringItem,
+                                child: Text(dropDownStringItem),
+                              );
+                            }).toList(),
+                            onChanged: (String classSelected) {
+                              setState(() {
+                                _homeworkClass = classSelected;
+                                print(_homeworkClass);
+                              });
+                            },
+                            value: _homeworkClass,
+                          ),
                         ),
                       ],
                     ),
@@ -103,8 +105,9 @@ class _AddHomeworkState extends State<AddHomework> {
                     padding: EdgeInsets.symmetric(
                       horizontal: 20.0,
                     ),
-                    decoration:
-                        BoxDecoration(border: Border.all(color: Colors.black)),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
@@ -113,21 +116,22 @@ class _AddHomeworkState extends State<AddHomework> {
                           style: TextStyle(fontWeight: FontWeight.w600),
                         ),
                         Container(
-                          color: Colors.lightBlueAccent,
-                          child: DropdownButton<String>(
-                            items: _sections.map((String dropDownStringItem) {
-                              return DropdownMenuItem<String>(
-                                value: dropDownStringItem,
-                                child: Text(dropDownStringItem),
-                              );
-                            }).toList(),
-                            onChanged: (String sectionSelected) {
-                              setState(() {
-                                _section = sectionSelected;
-                                print(_section);
-                              });
-                            },
-                            value: _section,
+                          child: DropdownButtonHideUnderline(
+                                                      child: DropdownButton<String>(
+                              items: _sections.map((String dropDownStringItem) {
+                                return DropdownMenuItem<String>(
+                                  value: dropDownStringItem,
+                                  child: Text(dropDownStringItem),
+                                );
+                              }).toList(),
+                              onChanged: (String sectionSelected) {
+                                setState(() {
+                                  _section = sectionSelected;
+                                  print(_section);
+                                });
+                              },
+                              value: _section,
+                            ),
                           ),
                         ),
                       ],
