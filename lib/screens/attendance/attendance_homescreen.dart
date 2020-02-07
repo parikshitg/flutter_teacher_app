@@ -11,7 +11,7 @@ class AttendanceHomescreen extends StatefulWidget {
 }
 
 class _AttendanceHomescreenState extends State<AttendanceHomescreen> {
-  bool checkBoxValue = false;
+  var _selectedStudents = [];
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +37,10 @@ class _AttendanceHomescreenState extends State<AttendanceHomescreen> {
             },
           ),
         ],
-        /*bottom: TabBar(tabs: <Widget>[
-          TabController(),
-          Text('Date Picker'),
-        ],),*/
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(10.0,5.0,0.0,5.0),
+          padding: EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 5.0),
           child: Column(
             children: students.map(
               (tx) {
@@ -67,12 +63,14 @@ class _AttendanceHomescreenState extends State<AttendanceHomescreen> {
                     title: Text(tx.name),
                     subtitle: Text('Roll No. ${tx.rollNo}'),
                     trailing: Checkbox(
-                      value: checkBoxValue,
-                      onChanged: (bool v) {
+                      value: tx.isPresent,
+                      onChanged: (bool value) {
                         setState(() {
-                          checkBoxValue = v;
-                          tx.isPresent = v;
-                          print(v);
+                          tx.isPresent = value;
+                          if (tx.isPresent == true) {
+                            _selectedStudents.add(tx.name);
+                          }
+                          print(_selectedStudents);
                         });
                       },
                     ),
