@@ -1,4 +1,8 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import './../../models/event_model.dart';
 
 class AddEvent extends StatefulWidget {
@@ -15,10 +19,30 @@ class AddEvent extends StatefulWidget {
 class _AddEventState extends State<AddEvent> {
   final _formKey = GlobalKey<FormState>();
 
+  TextEditingController _dateController = TextEditingController();
+
+  var _dateFormat = DateFormat('dd-MM-yyyy');
+
   String _title = '';
-  String _eventDate = '';
+  DateTime _eventDate;
   String _body = '';
   String _category = '';
+
+  Future<Null> _andriodDatePicker(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2018),
+        lastDate: DateTime(2021));
+
+    if (picked != null && picked != _eventDate) {
+      setState(() {
+        _eventDate = picked;
+        print(_eventDate);
+        _dateController.text = _dateFormat.format(picked);
+      });
+    }
+  }
 
   //_submit form function
   _submit() {
@@ -90,12 +114,32 @@ class _AddEventState extends State<AddEvent> {
                       height: 10.0,
                     ),
                     TextFormField(
-                      initialValue: _eventDate,
+                      controller: _dateController,
                       decoration: InputDecoration(
                         
                         labelText: 'Date',
                       ),
-                      onSaved: (input) => _eventDate = input,
+                      onTap: () {
+                        Platform.isIOS
+                            ? showCupertinoModalPopup(
+                                context: context,
+                                builder: (context) {
+                                  return Container(
+                                    height: 300.0,
+                                    child: CupertinoDatePicker(
+                                      initialDateTime: DateTime.now(),
+                                      mode: CupertinoDatePickerMode.date,
+                                      onDateTimeChanged: (datetime) {
+                                        print(datetime);
+                                        _dateController.text =
+                                            _dateFormat.format(datetime);
+                                        _eventDate = datetime;
+                                      },
+                                    ),
+                                  );
+                                })
+                            : _andriodDatePicker(context);
+                      },
                     ),
                     SizedBox(
                       height: 10.0,

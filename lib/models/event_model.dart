@@ -1,6 +1,6 @@
 class Event{
   final String title;
-  final String eventDate;
+  DateTime eventDate;
   final String body;
   final String category;
 
