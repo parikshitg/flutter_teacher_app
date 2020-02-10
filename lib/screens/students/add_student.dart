@@ -34,8 +34,8 @@ class _AddStudentState extends State<AddStudent> {
   String _mothersName = '';
   String _fathersPhoneNo = '';
   String _mothersPhoneNo = '';
-  int _gender;
-  DateTime _dob = DateTime.now();
+  String _gender = '';
+  DateTime _dob;
   String _address = '';
 
   int _genderGroup = -1;
@@ -125,6 +125,26 @@ class _AddStudentState extends State<AddStudent> {
     }
   }
 
+
+  void _genderFunction(int value) {
+    setState(() {
+      _genderGroup = value;
+
+      switch (_genderGroup) {
+        case 1:
+          _gender = "Male";
+          print('Male');
+          //_answer = 'Male';
+          break;
+        case 2:
+          _gender = 'Female';
+          print('Female');
+          //_answer = 'Female';
+          break;
+      }
+    });
+  }
+
   //_submit form function
   _submit() {
     if (_formKey.currentState.validate()) {
@@ -151,28 +171,11 @@ class _AddStudentState extends State<AddStudent> {
       print('student.mothersName: ${student.mothersName}');
       print('student.mothersPhoneNo: ${student.mothersPhoneNo}');
       print('student.gender: ${student.gender}');
-      //print('student.dob: ${student.dob}');
-      print('student.dob: ${DateFormat('yyyy-MM-dd').format(student.dob)}');
+      print('student.dob: ${student.dob}');
       print('student.address: ${student.address}');
     }
   }
 
-  void _genderFunction(int value) {
-    setState(() {
-      _genderGroup = value;
-
-      switch (_genderGroup) {
-        case 1:
-          print('Male');
-          //_answer = 'Male';
-          break;
-        case 2:
-          print('Female');
-          //_answer = 'Female';
-          break;
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -391,6 +394,7 @@ class _AddStudentState extends State<AddStudent> {
                                           print(datetime);
                                           _dobController.text =
                                               _dobFormat.format(datetime);
+                                              _dob = datetime;
                                         }),
                                   );
                                 })

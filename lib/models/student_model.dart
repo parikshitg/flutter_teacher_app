@@ -8,7 +8,7 @@ class Student {
   final String mothersName;
   final String fathersPhoneNo;
   final String mothersPhoneNo;
-  final int gender;
+  final String gender;
    DateTime dob;
   final String address;
   final String profileUrl;
