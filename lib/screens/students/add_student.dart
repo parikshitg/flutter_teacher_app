@@ -125,7 +125,6 @@ class _AddStudentState extends State<AddStudent> {
     }
   }
 
-
   void _genderFunction(int value) {
     setState(() {
       _genderGroup = value;
@@ -175,7 +174,6 @@ class _AddStudentState extends State<AddStudent> {
       print('student.address: ${student.address}');
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -389,13 +387,15 @@ class _AddStudentState extends State<AddStudent> {
                                   return Container(
                                     height: 300.0,
                                     child: CupertinoDatePicker(
-                                        initialDateTime: DateTime.now(),
-                                        onDateTimeChanged: (datetime) {
-                                          print(datetime);
-                                          _dobController.text =
-                                              _dobFormat.format(datetime);
-                                              _dob = datetime;
-                                        }),
+                                      initialDateTime: DateTime.now(),
+                                      mode: CupertinoDatePickerMode.date,
+                                      onDateTimeChanged: (datetime) {
+                                        print(datetime);
+                                        _dobController.text =
+                                            _dobFormat.format(datetime);
+                                        _dob = datetime;
+                                      },
+                                    ),
                                   );
                                 })
                             : _andriodDatePicker(context);
