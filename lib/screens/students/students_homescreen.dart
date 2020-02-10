@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../screens/students/student_details.dart';
 import '../../models/student_model.dart';
@@ -83,7 +84,7 @@ class _StudentsHomescreenState extends State<StudentsHomescreen> {*/
                             color: Colors.black54,
                           ),
                           onPressed: () {
-                            print('call button clicked');
+                            launch("tel:{tx.fathersPhoneNo}");
                           },
                         ),
                         IconButton(
@@ -92,7 +93,7 @@ class _StudentsHomescreenState extends State<StudentsHomescreen> {*/
                             color: Colors.black54,
                           ),
                           onPressed: () {
-                            print('sms button clicked');
+                            launch("sms:{tx.fathersPhoneNo}");
                           },
                         ),
                       ],
