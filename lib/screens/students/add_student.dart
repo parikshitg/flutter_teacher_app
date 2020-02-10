@@ -24,6 +24,9 @@ class AddStudent extends StatefulWidget {
 class _AddStudentState extends State<AddStudent> {
   final _formKey = GlobalKey<FormState>();
 
+  TextEditingController _dobController = TextEditingController();
+  var _dobFormat = DateFormat('dd-MM-yyyy');
+
   String _name = '';
   String _rollNo;
   String _bloodGroup = '';
@@ -41,6 +44,22 @@ class _AddStudentState extends State<AddStudent> {
 
   _showSelectImageDialog() {
     return Platform.isIOS ? _iosBottomSheet() : _androidDialog;
+  }
+
+  Future<Null> _andriodDatePicker(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2018),
+        lastDate: DateTime(2021));
+
+    if (picked != null && picked != _dob) {
+      setState(() {
+        _dob = picked;
+        print(_dob);
+        _dobController.text = _dobFormat.format(picked);
+      });
+    }
   }
 
   _iosBottomSheet() {
@@ -138,25 +157,6 @@ class _AddStudentState extends State<AddStudent> {
     }
   }
 
-  //date of birth picker
-  Future _selectDate() async {
-    DateTime picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2019),
-      lastDate: DateTime.now(),
-    );
-    if (picked == null) {
-      print("no date chosen");
-      return;
-    } else {
-      setState(() {
-        _dob = picked;
-      });
-      //print(_dob);
-    }
-  }
-
   void _genderFunction(int value) {
     setState(() {
       _genderGroup = value;
@@ -227,9 +227,6 @@ class _AddStudentState extends State<AddStudent> {
                     ),
                     TextFormField(
                       initialValue: _name,
-                      /*style: TextStyle(
-                        fontSize: 18.0
-                      ),*/
                       decoration: InputDecoration(
                         icon: Icon(
                           Icons.person,
@@ -374,17 +371,31 @@ class _AddStudentState extends State<AddStudent> {
                       height: 10.0,
                     ),
                     TextFormField(
-                      //initialValue:
-                        //  '${DateFormat('yyyy-MM-dd').format(DateTime.now())}',
-                      onTap: _selectDate,
+                      controller: _dobController,
                       decoration: InputDecoration(
                         icon: Icon(
                           Icons.cake,
                         ),
                         labelText: 'DOB',
                       ),
-                      //onSaved: (input) => _dob,
-                      //onSaved: (input) => _dob = '${DateFormat.yMd().format(input)}',
+                      onTap: () {
+                        Platform.isIOS
+                            ? showCupertinoModalPopup(
+                                context: context,
+                                builder: (context) {
+                                  return Container(
+                                    height: 300.0,
+                                    child: CupertinoDatePicker(
+                                        initialDateTime: DateTime.now(),
+                                        onDateTimeChanged: (datetime) {
+                                          print(datetime);
+                                          _dobController.text =
+                                              _dobFormat.format(datetime);
+                                        }),
+                                  );
+                                })
+                            : _andriodDatePicker(context);
+                      },
                     ),
                     SizedBox(
                       height: 10.0,
@@ -406,17 +417,6 @@ class _AddStudentState extends State<AddStudent> {
           ],
         ),
       ),
-      /*bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(0.0),
-        child: RaisedButton(
-          onPressed: () {
-            print('save clicked');
-          },
-          color: Colors.black,
-          textColor: Colors.white,
-          child: Text('Save'),
-        ),
-      ),*/
     );
   }
 }
