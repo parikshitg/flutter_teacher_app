@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 class Schedule {
+  final String day;
   final String startTime;
   final String endTime;
   final String className;
@@ -8,7 +9,8 @@ class Schedule {
   final String subject;
 
   Schedule(
-      {@required this.startTime,
+      {this.day,
+        @required this.startTime,
       @required this.endTime,
       @required this.className,
       @required this.section,
@@ -17,6 +19,7 @@ class Schedule {
 
 final List<Schedule> schedules = [
   Schedule(
+    day: 'Monday',
     startTime: '08:00',
     endTime: '09:00',
     className: '5',
@@ -24,6 +27,7 @@ final List<Schedule> schedules = [
     subject: 'Science',
   ),
   Schedule(
+    day: 'Monday',
     startTime: '09:00',
     endTime: '10:00',
     className: '6',
@@ -31,6 +35,7 @@ final List<Schedule> schedules = [
     subject: 'Science',
   ),
   Schedule(
+    day: 'Monday',
     startTime: '10:00',
     endTime: '11:00',
     className: '4',
@@ -38,6 +43,7 @@ final List<Schedule> schedules = [
     subject: 'Science',
   ),
   Schedule(
+    day: 'Monday',
     startTime: '11:00',
     endTime: '12:00',
     className: '5',
@@ -59,6 +65,7 @@ final List<Schedule> schedules = [
     subject: 'Science',
   ),
   Schedule(
+    day: 'Monday',
     startTime: '02:00',
     endTime: '03:00',
     className: '5',
@@ -66,6 +73,7 @@ final List<Schedule> schedules = [
     subject: 'Science',
   ),
   Schedule(
+    day: 'Monday',
     startTime: '03:00',
     endTime: '04:00',
     className: '5',
