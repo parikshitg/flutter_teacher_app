@@ -38,7 +38,6 @@ class _AddEventState extends State<AddEvent> {
     if (picked != null && picked != _eventDate) {
       setState(() {
         _eventDate = picked;
-        print(_eventDate);
         _dateController.text = _dateFormat.format(picked);
       });
     }
@@ -130,7 +129,6 @@ class _AddEventState extends State<AddEvent> {
                                       initialDateTime: DateTime.now(),
                                       mode: CupertinoDatePickerMode.date,
                                       onDateTimeChanged: (datetime) {
-                                        print(datetime);
                                         _dateController.text =
                                             _dateFormat.format(datetime);
                                         _eventDate = datetime;

@@ -8,6 +8,10 @@ class AddHomework extends StatefulWidget {
 }
 
 class _AddHomeworkState extends State<AddHomework> {
+  final _formKey = GlobalKey<FormState>();
+
+  String _description;
+
   var _homeworkClass = "1";
 
   var _section = 'A';
@@ -29,8 +33,19 @@ class _AddHomeworkState extends State<AddHomework> {
 
   var _sections = ['A', 'B', 'C', 'D', 'E'];
 
+  _submit() {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+
+      print(_description);
+      print(_section);
+      print(_homeworkClass);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final _height = MediaQuery.of(context).size.height.toInt();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -51,7 +66,7 @@ class _AddHomeworkState extends State<AddHomework> {
             ),
             textColor: Colors.black,
             onPressed: () {
-              print('Save Clicked');
+              _submit();
             },
           ),
         ],
@@ -91,7 +106,7 @@ class _AddHomeworkState extends State<AddHomework> {
                             onChanged: (String classSelected) {
                               setState(() {
                                 _homeworkClass = classSelected;
-                                print(_homeworkClass);
+                                //print(_homeworkClass);
                               });
                             },
                             value: _homeworkClass,
@@ -117,7 +132,7 @@ class _AddHomeworkState extends State<AddHomework> {
                         ),
                         Container(
                           child: DropdownButtonHideUnderline(
-                                                      child: DropdownButton<String>(
+                            child: DropdownButton<String>(
                               items: _sections.map((String dropDownStringItem) {
                                 return DropdownMenuItem<String>(
                                   value: dropDownStringItem,
@@ -127,7 +142,7 @@ class _AddHomeworkState extends State<AddHomework> {
                               onChanged: (String sectionSelected) {
                                 setState(() {
                                   _section = sectionSelected;
-                                  print(_section);
+                                  //print(_section);
                                 });
                               },
                               value: _section,
@@ -138,6 +153,31 @@ class _AddHomeworkState extends State<AddHomework> {
                     ),
                   ),
                 ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
+              child: Container(
+                decoration:
+                    BoxDecoration(border: Border.all(color: Colors.black)),
+                child: Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Column(
+                    children: <Widget>[
+                      Form(
+                        key: _formKey,
+                        child: TextFormField(
+                          maxLines: _height,
+                          decoration: InputDecoration.collapsed(
+                              hintText: "Enter description here..."),
+                          onSaved: (value) {
+                            _description = value;
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ],
