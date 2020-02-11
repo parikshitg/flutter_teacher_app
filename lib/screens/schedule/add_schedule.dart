@@ -36,7 +36,7 @@ class _AddScheduleState extends State<AddSchedule> {
   _selectPlatformOS(TextEditingController txtCntrl) {
     return !Platform.isIOS
         ? _cupertinoTimePicker(txtCntrl)
-        : _andriodTimePicker(context,txtCntrl);
+        : _andriodTimePicker(context, txtCntrl);
   }
 
   _cupertinoTimePicker(TextEditingController txtCntrl) {
@@ -50,14 +50,19 @@ class _AddScheduleState extends State<AddSchedule> {
                 mode: CupertinoDatePickerMode.time,
                 use24hFormat: false,
                 onDateTimeChanged: (datetime) {
-                  txtCntrl.text =
-                  customFormat.format(datetime);
+                  txtCntrl.text = customFormat.format(datetime);
+                  if (txtCntrl == _startTimeController) {
+                    _startTime = _startTimeController.text;
+                  } else if (txtCntrl == _endTimeController) {
+                    _endTime = _endTimeController.text;
+                  }
                 },
               ));
         });
   }
 
-  Future<Null> _andriodTimePicker(BuildContext context,TextEditingController txtCntrl ) async {
+  Future<Null> _andriodTimePicker(
+      BuildContext context, TextEditingController txtCntrl) async {
     final TimeOfDay pickedTime = await showTimePicker(
         context: context,
         initialTime: selectedTime,
@@ -71,12 +76,17 @@ class _AddScheduleState extends State<AddSchedule> {
     if (pickedTime != null && pickedTime != selectedTime)
       setState(() {
         selectedTime = pickedTime;
-        print(selectedTime);
+        //print(selectedTime);
         final now = new DateTime.now();
         final dt = DateTime(now.year, now.month, now.day, selectedTime.hour,
             selectedTime.minute);
         final format = DateFormat.jm(); //"6:00 AM"
         txtCntrl.text = format.format(dt);
+        if (txtCntrl == _startTimeController) {
+          _startTime = _startTimeController.text;
+        } else if (txtCntrl == _endTimeController) {
+          _endTime = _endTimeController.text;
+        }
       });
   }
 
@@ -188,7 +198,9 @@ class _AddScheduleState extends State<AddSchedule> {
                   ),
                   labelText: 'Start Time',
                 ),
-                onTap: () {_selectPlatformOS(_startTimeController);},
+                onTap: () {
+                  _selectPlatformOS(_startTimeController);
+                },
               ),
               SizedBox(
                 height: 20.0,
@@ -201,7 +213,9 @@ class _AddScheduleState extends State<AddSchedule> {
                   ),
                   labelText: 'End Time',
                 ),
-                onTap: () {_selectPlatformOS(_endTimeController);},
+                onTap: () {
+                  _selectPlatformOS(_endTimeController);
+                },
               ),
             ],
           ),
