@@ -1,4 +1,8 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../models/schedule_model.dart';
 
@@ -16,30 +20,68 @@ class AddSchedule extends StatefulWidget {
 class _AddScheduleState extends State<AddSchedule> {
   final _formKey = GlobalKey<FormState>();
 
+  var customFormat = DateFormat('HH:mm a');
+
+  TimeOfDay selectedTime = TimeOfDay.now();
+
+  TextEditingController _startTimeController = TextEditingController();
+  TextEditingController _endTimeController = TextEditingController();
+
   String _startTime = '';
   String _endTime = '';
   String _className = '';
   String _section = '';
   String _subject = '';
 
-  TimeOfDay _time = TimeOfDay.now();
-  TimeOfDay picked;
-
-  Future<Null> selectTime(BuildContext context) async{
-    picked = await showTimePicker(
-      context: context,
-      initialTime: _time,
-    );
-
-    setState(() {
-      _time = picked;
-      print(_time);
-    });
+  _selectPlatformOS(TextEditingController txtCntrl) {
+    return !Platform.isIOS
+        ? _cupertinoTimePicker(txtCntrl)
+        : _andriodTimePicker(context,txtCntrl);
   }
 
+  _cupertinoTimePicker(TextEditingController txtCntrl) {
+    showCupertinoModalPopup(
+        context: context,
+        builder: (context) {
+          return Container(
+              height: 300.0,
+              child: CupertinoDatePicker(
+                initialDateTime: DateTime.now(),
+                mode: CupertinoDatePickerMode.time,
+                use24hFormat: false,
+                onDateTimeChanged: (datetime) {
+                  txtCntrl.text =
+                  customFormat.format(datetime);
+                },
+              ));
+        });
+  }
+
+  Future<Null> _andriodTimePicker(BuildContext context,TextEditingController txtCntrl ) async {
+    final TimeOfDay pickedTime = await showTimePicker(
+        context: context,
+        initialTime: selectedTime,
+        builder: (BuildContext context, Widget child) {
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: false),
+            child: child,
+          );
+        });
+
+    if (pickedTime != null && pickedTime != selectedTime)
+      setState(() {
+        selectedTime = pickedTime;
+        print(selectedTime);
+        final now = new DateTime.now();
+        final dt = DateTime(now.year, now.month, now.day, selectedTime.hour,
+            selectedTime.minute);
+        final format = DateFormat.jm(); //"6:00 AM"
+        txtCntrl.text = format.format(dt);
+      });
+  }
 
   _submit() {
-    if(_formKey.currentState.validate()){
+    if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
 
       Schedule schedule = Schedule(
@@ -103,7 +145,9 @@ class _AddScheduleState extends State<AddSchedule> {
                     : null,
                 onSaved: (input) => _className = input,
               ),
-              SizedBox(height: 20.0,),
+              SizedBox(
+                height: 20.0,
+              ),
               TextFormField(
                 initialValue: _section,
                 decoration: InputDecoration(
@@ -117,7 +161,9 @@ class _AddScheduleState extends State<AddSchedule> {
                     : null,
                 onSaved: (input) => _section = input,
               ),
-              SizedBox(height: 20.0,),
+              SizedBox(
+                height: 20.0,
+              ),
               TextFormField(
                 initialValue: _subject,
                 decoration: InputDecoration(
@@ -131,36 +177,31 @@ class _AddScheduleState extends State<AddSchedule> {
                     : null,
                 onSaved: (input) => _subject = input,
               ),
-              SizedBox(height: 20.0,),
+              SizedBox(
+                height: 20.0,
+              ),
               TextFormField(
-                /*onTap: () {
-                  selectTime(context);
-                },*/
-                initialValue: _startTime,
+                controller: _startTimeController,
                 decoration: InputDecoration(
                   icon: Icon(
                     Icons.timer,
                   ),
                   labelText: 'Start Time',
                 ),
-                validator: (input) => input.trim().length < 1
-                    ? 'Please Enter a valid name'
-                    : null,
-                onSaved: (input) => _startTime = input,
+                onTap: () {_selectPlatformOS(_startTimeController);},
               ),
-              SizedBox(height: 20.0,),
+              SizedBox(
+                height: 20.0,
+              ),
               TextFormField(
-                initialValue: _endTime,
+                controller: _endTimeController,
                 decoration: InputDecoration(
                   icon: Icon(
                     Icons.timer_off,
                   ),
                   labelText: 'End Time',
                 ),
-                validator: (input) => input.trim().length < 1
-                    ? 'Please Enter a valid name'
-                    : null,
-                onSaved: (input) => _endTime = input,
+                onTap: () {_selectPlatformOS(_endTimeController);},
               ),
             ],
           ),
