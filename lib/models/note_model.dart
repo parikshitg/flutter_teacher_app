@@ -1,5 +1,5 @@
 class Note{
-  String noteDate;
+  DateTime noteDate;
   final String title;
   final String body;
 
@@ -8,47 +8,47 @@ class Note{
 
 final List<Note> notes = [
   Note(
-    noteDate: '26 february, 2019',
+    noteDate: DateTime.now(),
     title: 'some note title',
   ),
   Note(
-    noteDate: '26 february, 2019',
+    noteDate: DateTime.now(),
     title: 'some note title',
   ),
   Note(
-    noteDate: '26 february, 2019',
+    noteDate: DateTime.now(),
     title: 'some note title',
   ),
   Note(
-    noteDate: '26 february, 2019',
+    noteDate: DateTime.now(),
     title: 'some note title',
   ),
   Note(
-    noteDate: '26 february, 2019',
+    noteDate: DateTime.now(),
     title: 'some note title',
   ),
   Note(
-    noteDate: '26 february, 2019',
+    noteDate: DateTime.now(),
     title: 'some note title',
   ),
   Note(
-    noteDate: '26 february, 2019',
+    noteDate: DateTime.now(),
     title: 'some note title',
   ),
   Note(
-    noteDate: '26 february, 2019',
+    noteDate: DateTime.now(),
     title: 'some note title',
   ),
   Note(
-    noteDate: '26 february, 2019',
+    noteDate: DateTime.now(),
     title: 'some note title',
   ),
   Note(
-    noteDate: '26 february, 2019',
+    noteDate: DateTime.now(),
     title: 'some note title',
   ),
   Note(
-    noteDate: '26 february, 2019',
+    noteDate: DateTime.now(),
     title: 'some note title',
   ),
 

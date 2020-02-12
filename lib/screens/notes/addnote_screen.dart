@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class AddNote extends StatefulWidget {
   static final id = 'addnote_screen';
 
@@ -8,10 +7,23 @@ class AddNote extends StatefulWidget {
   _AddNoteState createState() => _AddNoteState();
 }
 
-class _AddNoteState extends State<AddNote> { 
+class _AddNoteState extends State<AddNote> {
+  final _formKey = GlobalKey<FormState>();
+
+  String _note;
+
+  _submit() {
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+
+      print(_note); 
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final _height = MediaQuery.of(context).size.height.toInt();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -33,10 +45,28 @@ class _AddNoteState extends State<AddNote> {
               style: TextStyle(color: Colors.black),
             ),
             onPressed: () {
-              print('save note clicked');
+              _submit();
             },
           ),
         ],
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Column(
+            children: <Widget>[
+              Form(
+                key: _formKey,
+                child: TextFormField(
+                  maxLines: _height,
+                  decoration:
+                      InputDecoration.collapsed(hintText: 'write note here...'),
+                  onSaved: (input) => _note = input,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

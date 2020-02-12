@@ -101,7 +101,6 @@ class _AddEventState extends State<AddEvent> {
                     TextFormField(
                       initialValue: _title,
                       decoration: InputDecoration(
-                        
                         labelText: 'Title',
                       ),
                       validator: (input) => input.trim().length < 1
@@ -115,7 +114,6 @@ class _AddEventState extends State<AddEvent> {
                     TextFormField(
                       controller: _dateController,
                       decoration: InputDecoration(
-                        
                         labelText: 'Date',
                       ),
                       onTap: () {
@@ -143,23 +141,28 @@ class _AddEventState extends State<AddEvent> {
                       height: 10.0,
                     ),
                     TextFormField(
-                      initialValue: _body,
-                      decoration: InputDecoration(
-                        
-                        labelText: 'Body',
-                      ),
-                      onSaved: (input) => _body = input,
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    TextFormField(
                       initialValue: _category,
                       decoration: InputDecoration(
-                        
                         labelText: 'Category',
                       ),
                       onSaved: (input) => _category = input,
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey)),
+                      child: Padding(
+                        padding: EdgeInsets.all(10.0),
+                        child: TextFormField(
+                          maxLines: 10,
+                          decoration: InputDecoration.collapsed(
+                            hintText: 'Description',
+                          ),
+                          onSaved: (input) => _body = input,
+                        ),
+                      ),
                     ),
                   ],
                 ),
