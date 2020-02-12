@@ -9,7 +9,7 @@ class Note{
 final List<Note> notes = [
   Note(
     noteDate: DateTime.now(),
-    title: 'some note title',
+    title: 'some note title some title note some title',
   ),
   Note(
     noteDate: DateTime.now(),

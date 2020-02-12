@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AddNote extends StatefulWidget {
   static final id = 'addnote_screen';
@@ -11,12 +12,18 @@ class _AddNoteState extends State<AddNote> {
   final _formKey = GlobalKey<FormState>();
 
   String _note;
+  String _title;
+  DateTime _date = DateTime.now();
+
+  var _dateFormat = DateFormat('EEE d MMM, yyyy hh:mm a');
 
   _submit() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
 
-      print(_note); 
+      print(_note);
+      print(_title);
+      print(_dateFormat.format(_date));
     }
   }
 
@@ -61,7 +68,14 @@ class _AddNoteState extends State<AddNote> {
                   maxLines: _height,
                   decoration:
                       InputDecoration.collapsed(hintText: 'write note here...'),
-                  onSaved: (input) => _note = input,
+                  onSaved: (input) {
+                    _note = input;
+                    if (_note.length >= 30) {
+                      _title = _note.substring(0, 30);
+                    } else{
+                      _title = _note;
+                    }
+                  },
                 ),
               ),
             ],
